@@ -11,7 +11,8 @@
 
     <div class="text-center mb-4">
     <h2 class="text-xl font-bold">Login</h2>
-    <p class="text-gray-500 text-sm">One on One Diplomacy Ebook test test</p>
+    <p class="text-gray-500 text-sm">One on One Diplomacy Ebook
+    </p>
 </div>
 
     @if(session('error'))
