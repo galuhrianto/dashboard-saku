@@ -6,17 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::table('states', function (Blueprint $table) {
-            $table->integer('council_part')->nullable()->change();
+            $table->string('country_code', 2)->nullable()->after('state_name');
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('states', function (Blueprint $table) {
-            $table->integer('council_part')->nullable(false)->change();
+            $table->dropColumn('country_code');
         });
     }
 };

@@ -1,90 +1,121 @@
-@extends('layouts.app')
+@extends ('layouts.app')
 
-@section('content')
+@section ('content')
+  <section class="space-y-6">
+    <div class="rounded-2xl border border-(--border) bg-(--card) p-5 shadow-sm sm:p-6">
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight">User Management</h1>
+          <p class="mt-1 text-sm text-(--muted-foreground)">Kelola akun pengguna, role, dan akses sistem dalam satu halaman.</p>
+        </div>
 
-<h2 class="text-xl font-bold mb-4">User Management</h2>
+        <div
+          class="rounded-lg border border-(--border) bg-(--secondary) px-3 py-2 text-sm text-(--secondary-foreground)"
+        >
+          Total User: <span class="font-semibold text-(--foreground)">{{ $users->count() }}</span>
+        </div>
+      </div>
 
-<!-- ➕ TAMBAH USER -->
-<div class="bg-white p-4 rounded-xl shadow mb-4">
-    <form method="POST" action="{{ route('users.store') }}" class="flex gap-3">
+      <form
+        method="POST"
+        action="{{ route('users.store') }}"
+        class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3"
+      >
         @csrf
 
-        <input name="name" placeholder="Nama" 
-            class="border p-2 rounded w-1/3" required>
+        <input
+          name="name"
+          placeholder="Nama"
+          class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35"
+          required
+        />
 
-        <input name="username" placeholder="Username" 
-            class="border p-2 rounded w-1/3" required>
+        <input
+          name="username"
+          placeholder="Username"
+          class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35"
+          required
+        />
 
-        <button class="bg-blue-600 text-white px-4 py-2 rounded">
-            Tambah
+        <button
+          class="inline-flex h-10.5 items-center justify-center rounded-(--radius) bg-(--primary) px-4 text-sm font-semibold text-(--primary-foreground) transition hover:brightness-105"
+        >
+          Tambah User
         </button>
-    </form>
-</div>
+      </form>
+    </div>
 
-<!-- 📋 LIST USER -->
-<div class="bg-white shadow rounded-xl overflow-hidden">
-    <table class="w-full text-left">
-        <thead class="bg-gray-100">
+    <div class="overflow-hidden rounded-2xl border border-(--border) bg-(--card) shadow-sm">
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-left text-sm">
+          <thead class="bg-(--secondary) text-(--secondary-foreground)">
             <tr>
-                <th class="p-3">Nama</th>
-                <th class="p-3">Username</th>
-                <th class="p-3">Role</th>
-                <th class="p-3">Aksi</th>
+              <th class="px-4 py-3 font-semibold">Nama</th>
+              <th class="px-4 py-3 font-semibold">Username</th>
+              <th class="px-4 py-3 font-semibold">Role</th>
+              <th class="px-4 py-3 font-semibold">Aksi</th>
             </tr>
-        </thead>
-        <tbody>
-            @forelse($users as $user)
-            <tr class="border-t">
-                <td class="p-3">{{ $user->name }}</td>
-                <td class="p-3">{{ $user->username }}</td>
+          </thead>
+          <tbody>
+            @forelse ($users as $user)
+              <tr class="border-t border-(--border)/80 transition hover:bg-(--accent)/60">
+                <td class="px-4 py-3 font-medium">{{ $user->name }}</td>
+                <td class="px-4 py-3 text-(--muted-foreground)">{{ $user->username }}</td>
 
-                <!-- ✏️ EDIT ROLE -->
-                <td class="p-3">
-                    <form method="POST" action="{{ route('users.update', $user->id) }}">
-                        @csrf
-                        @method('PUT')
+                <td class="px-4 py-3">
+                  <form method="POST" action="{{ route('users.update', $user->id) }}">
+                    @csrf
+                    @method ('PUT')
 
-                        <select name="role_id" 
-                                onchange="this.form.submit()" 
-                                class="border p-1 rounded">
-
-                            @foreach($roles as $role)
-                                <option value="{{ $role->id }}"
-                                    {{ $user->role_id == $role->id ? 'selected' : '' }}>
-                                    {{ ucfirst($role->name) }}
-                                </option>
-                            @endforeach
-
-                        </select>
-                    </form>
+                    <select
+                      name="role_id"
+                      onchange="this.form.submit()"
+                      class="rounded-(--radius) border border-(--input) bg-(--background) px-2.5 py-1.5 text-xs font-medium transition outline-none focus:border-(--primary)"
+                    >
+                      @foreach ($roles as $role)
+                        <option
+                          value="{{ $role->id }}"
+                          {{ $user->role_id == $role->id ? 'selected' : '' }}
+                        >
+                          {{ ucfirst($role->name) }}
+                        </option>
+                      @endforeach
+                    </select>
+                  </form>
                 </td>
 
-                <!-- ❌ DELETE -->
-                <td class="p-3">
-                    @if($user->role_id != 1) <!-- 🔥 admin ga bisa dihapus -->
+                <td class="px-4 py-3">
+                  @if ($user->role_id != 1)
                     <form method="POST" action="{{ route('users.destroy', $user->id) }}">
-                        @csrf
-                        @method('DELETE')
+                      @csrf
+                      @method ('DELETE')
 
-                        <button class="bg-red-500 text-white px-2 py-1 rounded">
-                            Delete
-                        </button>
+                      <button
+                        class="inline-flex items-center rounded-(--radius) bg-(--destructive) px-3 py-1.5 text-xs font-semibold text-white transition hover:brightness-110"
+                      >
+                        Delete
+                      </button>
                     </form>
-                    @else
-                        <span class="text-gray-400 text-sm">Admin</span>
-                    @endif
+                  @else
+                    <span
+                      class="inline-flex items-center rounded-full bg-(--secondary) px-2.5 py-1 text-xs font-medium text-(--secondary-foreground)"
+                    >
+                      Admin
+                    </span>
+                  @endif
                 </td>
-
-            </tr>
+              </tr>
             @empty
-            <tr>
-                <td colspan="4" class="p-4 text-center text-gray-400">
-                    Belum ada user
+              <tr>
+                <td colspan="4" class="px-4 py-10 text-center text-(--muted-foreground)">
+                  Belum ada user
                 </td>
-            </tr>
+              </tr>
             @endforelse
-        </tbody>
-    </table>
-</div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
 @endsection

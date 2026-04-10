@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>One on One Diplomacy Ebook</title>
-    @vite('resources/css/app.css')
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One on One Diplomacy Ebook</title>
+  @vite ('resources/css/app.css')
 </head>
-<body class="bg-gray-100">
+<body class="min-h-screen bg-(--background) text-(--foreground) antialiased">
+  @include ('partials.header')
 
-@include('partials.header')
+  <div class="mx-auto w-full max-w-7xl p-4 sm:p-6">
+    @yield ('content')
+  </div>
 
-<div class="p-6">
-    @yield('content')
-</div>
-
-@yield('scripts')
+  @yield ('scripts')
 </body>
 </html>

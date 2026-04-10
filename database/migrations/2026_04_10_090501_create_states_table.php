@@ -10,19 +10,19 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::create('states', function (Blueprint $table) {
-        $table->id();
-        $table->string('state_name');
-        $table->string('capital_city')->nullable();
-        $table->string('icao_region')->nullable();
-        $table->string('icao_regional_office')->nullable();
-        $table->string('rep_in_council')->nullable();
-        $table->float('vote_probability_indonesia')->nullable();
-        $table->integer('council_part');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('states', function (Blueprint $table) {
+            $table->id();
+            $table->string('state_name');
+            $table->string('capital_city')->nullable();
+            $table->string('icao_region')->nullable();
+            $table->string('icao_regional_office')->nullable();
+            $table->string('rep_in_council')->nullable();
+            $table->float('vote_probability_indonesia')->nullable();
+            $table->integer('council_part');
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
