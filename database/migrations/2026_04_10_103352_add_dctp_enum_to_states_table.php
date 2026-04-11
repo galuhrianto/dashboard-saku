@@ -9,10 +9,12 @@ return new class extends Migration
     public function up()
     {
         Schema::table('states', function (Blueprint $table) {
-            $table->enum('dctp_enum', [
-                'Belum Menerima',
+            $table->enum('dctp_status', [
                 'Sudah Menerima',
-                'Potensial Menerima',
+                'Penerima Potensial',
+                'Prioritas Penerima Dewan ICAO',
+                'Kompetitor',
+                'Belum Menerima',
             ])->nullable()->after('council_part');
         });
     }
@@ -20,7 +22,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('states', function (Blueprint $table) {
-            $table->dropColumn('dctp_enum');
+            $table->dropColumn('dctp_status');
         });
     }
 };

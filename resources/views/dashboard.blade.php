@@ -6,7 +6,7 @@
       <div class="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h1 class="text-2xl font-semibold tracking-tight">Dashboard Negara ICAO</h1>
-          <p class="mt-1 text-sm text-(--muted-foreground)">Monitoring negara anggota, council part, dan status DCTP secara cepat.</p>
+          <p class="mt-1 text-sm text-(--muted-foreground)">Monitoring negara anggota, council part, dan status DCTP</p>
         </div>
         <div
           class="rounded-lg border border-(--border) bg-(--secondary) px-3 py-2 text-sm text-(--secondary-foreground)"
@@ -63,18 +63,12 @@
           id="dctpFilter"
           class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35"
         >
-          <option value="">All Status</option>
-          <option value="Belum Menerima" {{ request('dctp') == 'Belum Menerima' ? 'selected' : '' }}
-            >Belum Menerima
-          </option>
-          <option value="Sudah Menerima" {{ request('dctp') == 'Sudah Menerima' ? 'selected' : '' }}
-            >Sudah Menerima
-          </option>
-          <option
-            value="Potensial Menerima"
-            {{ request('dctp') == 'Potensial Menerima' ? 'selected' : '' }}
-            >Potensial Menerima
-          </option>
+          <option value="">Semua Status DCTP</option>
+          <option value="Sudah Menerima" {{ request('dctp') == 'Sudah Menerima' ? 'selected' : '' }}>Sudah Menerima</option>
+          <option value="Penerima Potensial" {{ request('dctp') == 'Penerima Potensial' ? 'selected' : '' }}>Penerima Potensial</option>
+          <option value="Prioritas Penerima Dewan ICAO" {{ request('dctp') == 'Prioritas Penerima Dewan ICAO' ? 'selected' : '' }}>Prioritas Penerima Dewan ICAO</option>
+          <option value="Kompetitor" {{ request('dctp') == 'Kompetitor' ? 'selected' : '' }}>Kompetitor</option>
+          <option value="Belum Menerima" {{ request('dctp') == 'Belum Menerima' ? 'selected' : '' }}>Belum Menerima</option>
         </select>
       </form>
     </div>
@@ -104,10 +98,12 @@
                             ][$state->council_part] ?? 'background:#e5e7eb;color:#374151;';
 
                             $dctpStyle = [
-                                'Belum Menerima' => 'background:#fee2e2;color:#b91c1c;',
-                                'Sudah Menerima' => 'background:#d1fae5;color:#047857;',
-                                'Potensial Menerima' => 'background:#fef3c7;color:#b45309;',
-                            ][$state->dctp_enum] ?? 'background:#e5e7eb;color:#374151;';
+                                'Sudah Menerima'                => 'background:#d1fae5;color:#047857;',
+                                'Penerima Potensial'            => 'background:#dbeafe;color:#1d4ed8;',
+                                'Prioritas Penerima Dewan ICAO' => 'background:#ede9fe;color:#6d28d9;',
+                                'Kompetitor'                    => 'background:#fee2e2;color:#b91c1c;',
+                                'Belum Menerima'                => 'background:#f3f4f6;color:#6b7280;',
+                            ][$state->dctp_status] ?? '';
                         @endphp
               <tr class="border-t border-(--border)/80 transition hover:bg-(--accent)/60">
                 <td class="px-4 py-3 text-(--muted-foreground)">
@@ -129,12 +125,13 @@
                   </span>
                 </td>
                 <td class="px-4 py-3">
-                  <span
-                    class="rounded-full px-2.5 py-1 text-xs font-semibold"
-                    style="{{ $dctpStyle }}"
-                  >
-                    {{ $state->dctp_enum ?? '-' }}
-                  </span>
+                  @if($state->dctp_status)
+                    <span class="rounded-full px-2.5 py-1 text-xs font-semibold" style="{{ $dctpStyle }}">
+                      {{ $state->dctp_status }}
+                    </span>
+                  @else
+                    <span class="text-(--muted-foreground)">-</span>
+                  @endif
                 </td>
                 <td class="px-4 py-3">
                   <a
@@ -156,7 +153,7 @@
         </table>
       </div>
 
-      <div class="border-t border-(--border) px-4 py-3">{{ $states->links() }}</div>
+      <div class="flex justify-end border-t border-(--border) px-4 py-3">{{ $states->onEachSide(1)->links() }}</div>
     </div>
   </section>
 

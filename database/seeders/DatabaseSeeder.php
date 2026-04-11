@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             KerjasamasSeeder::class,
             BeasiswasSeeder::class,
             DirektursSeeder::class,
+            InformasiUmumSeeder::class,
+            DctpSeeder::class,
 
         ]);
     }

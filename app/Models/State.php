@@ -15,6 +15,22 @@ class State extends Model
         'rep_in_council',
         'vote_probability_indonesia',
         'council_part',
+        'deskripsi',
+        'dialing_code',
+        'currency',
+        'population',
+        'leader',
+        'official_languages',
+        'points_of_interest',
+        'university',
+        'additional_info',
+        'posisi_2016',
+        'posisi_2013',
+        'dctp_status',
+    ];
+
+    protected $casts = [
+        'additional_info' => 'array',
     ];
 
     public function kerjasama()

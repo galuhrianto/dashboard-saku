@@ -35,7 +35,7 @@ class StateController extends Controller
 
         // 📊 FILTER DCTP
         if ($request->dctp) {
-            $query->where('dctp_enum', $request->dctp);
+            $query->where('dctp_status', $request->dctp);
         }
 
         $states = $query

@@ -19,7 +19,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Australia',
@@ -29,7 +29,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Ms. Sarah Millard',
                 'vote_probability_indonesia' => 'tinggi / moderate / rendah',
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Bangladesh',
@@ -39,7 +39,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Bhutan',
@@ -49,7 +49,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Brunei Darussalam',
@@ -59,7 +59,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Cambodia',
@@ -69,7 +69,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'China',
@@ -79,7 +79,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Xinming Lyu',
                 'vote_probability_indonesia' => null,
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Cook Islands',
@@ -89,7 +89,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => "Democratic People's Republic of Korea",
@@ -99,7 +99,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Fiji',
@@ -109,7 +109,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'India',
@@ -119,7 +119,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Angshumali Rastogi',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Indonesia',
@@ -129,7 +129,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Japan',
@@ -139,7 +139,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Toshio Yamamoto',
                 'vote_probability_indonesia' => null,
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Kiribati',
@@ -149,7 +149,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => "Lao People's Democratic Republic",
@@ -159,7 +159,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Malaysia',
@@ -169,7 +169,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Nurulhakeem Hasim',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Maldives',
@@ -179,7 +179,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Marshall Islands',
@@ -189,7 +189,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Micronesia (Federated States of)',
@@ -199,7 +199,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Mongolia',
@@ -209,7 +209,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Myanmar',
@@ -219,7 +219,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Nauru',
@@ -229,7 +229,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Nepal',
@@ -239,7 +239,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'New Zealand',
@@ -249,7 +249,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Pakistan',
@@ -259,7 +259,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Palau',
@@ -269,7 +269,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Papua New Guinea',
@@ -279,7 +279,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Philippines',
@@ -289,7 +289,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Republic of Korea',
@@ -299,7 +299,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Samoa',
@@ -309,7 +309,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Singapore',
@@ -319,7 +319,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Ms. Eileen Poh',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Solomon Islands',
@@ -329,7 +329,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Sri Lanka',
@@ -339,7 +339,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Thailand',
@@ -349,7 +349,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Timor-Leste',
@@ -359,7 +359,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Tonga',
@@ -369,7 +369,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Tuvalu',
@@ -379,7 +379,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Vanuatu',
@@ -389,7 +389,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Viet Nam',
@@ -399,7 +399,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Bahrain',
@@ -409,7 +409,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Egypt',
@@ -419,7 +419,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Dr. Sameh Ahmed Zaky Elhefny',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Iraq',
@@ -429,7 +429,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Jordan',
@@ -439,7 +439,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Kuwait',
@@ -449,7 +449,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Lebanon',
@@ -459,7 +459,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Libya',
@@ -469,7 +469,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Oman',
@@ -479,7 +479,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Qatar',
@@ -489,7 +489,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Essa Abdulla Al-Malki',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Saudi Arabia',
@@ -499,7 +499,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Mohammed Sami S Habib',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Sudan',
@@ -509,7 +509,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Syrian Arab Republic',
@@ -519,7 +519,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'United Arab Emirates',
@@ -529,7 +529,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Mohammed Salem',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Yemen',
@@ -539,7 +539,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Iran (Islamic Republic of)',
@@ -549,7 +549,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Albania',
@@ -559,7 +559,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Algeria',
@@ -569,7 +569,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Andorra',
@@ -579,7 +579,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Armenia',
@@ -589,7 +589,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Austria',
@@ -599,7 +599,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Azerbaijan',
@@ -609,7 +609,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Belarus',
@@ -619,7 +619,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Belgium',
@@ -629,7 +629,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Bosnia and Herzegovina',
@@ -639,7 +639,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Bulgaria',
@@ -649,7 +649,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Croatia',
@@ -659,7 +659,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Cyprus',
@@ -669,7 +669,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Czechia',
@@ -679,7 +679,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Denmark',
@@ -689,7 +689,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Henrik Ellermann',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Estonia',
@@ -699,7 +699,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Finland',
@@ -709,7 +709,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'France',
@@ -719,7 +719,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Ms. Florence Cormon-Veyssière',
                 'vote_probability_indonesia' => null,
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Georgia',
@@ -729,7 +729,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Germany',
@@ -739,7 +739,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Heinz Decker',
                 'vote_probability_indonesia' => null,
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Greece',
@@ -749,7 +749,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Hungary',
@@ -759,7 +759,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Iceland',
@@ -769,7 +769,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Ireland',
@@ -779,7 +779,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Israel',
@@ -789,7 +789,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Italy',
@@ -799,7 +799,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Sergio Martes',
                 'vote_probability_indonesia' => null,
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Kazakhstan',
@@ -809,7 +809,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Kyrgyzstan',
@@ -819,7 +819,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Latvia',
@@ -829,7 +829,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Lithuania',
@@ -839,7 +839,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Luxembourg',
@@ -849,7 +849,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Malta',
@@ -859,7 +859,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Monaco',
@@ -869,7 +869,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Montenegro',
@@ -879,7 +879,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Morocco',
@@ -889,7 +889,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Salah Chekairi',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Netherlands',
@@ -899,7 +899,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'North Macedonia',
@@ -909,7 +909,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Norway',
@@ -919,7 +919,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Poland',
@@ -929,7 +929,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Mateusz Baczkowski',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Portugal',
@@ -939,7 +939,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Republic of Moldova',
@@ -949,7 +949,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Romania',
@@ -959,7 +959,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Russian Federation',
@@ -969,7 +969,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'San Marino',
@@ -979,7 +979,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Serbia',
@@ -989,7 +989,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Slovakia',
@@ -999,7 +999,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Slovenia',
@@ -1009,7 +1009,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Spain',
@@ -1019,7 +1019,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Ángel Luis Arias Serrano',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Sweden',
@@ -1029,7 +1029,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Switzerland',
@@ -1039,7 +1039,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Ms. Helena Hallauer-Hess',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Tajikistan',
@@ -1049,7 +1049,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Tunisia',
@@ -1059,7 +1059,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Türkiye',
@@ -1069,7 +1069,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Turkmenistan',
@@ -1079,7 +1079,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Ukraine',
@@ -1089,7 +1089,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'United Kingdom',
@@ -1099,7 +1099,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. William Gatward',
                 'vote_probability_indonesia' => null,
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Uzbekistan',
@@ -1109,7 +1109,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Angola',
@@ -1119,7 +1119,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mrs. Illasandra da Silva',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Botswana',
@@ -1129,7 +1129,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Burundi',
@@ -1139,7 +1139,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Comoros',
@@ -1149,7 +1149,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Djibouti',
@@ -1159,7 +1159,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Eritrea',
@@ -1169,7 +1169,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Eswatini',
@@ -1179,7 +1179,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Ethiopia',
@@ -1189,7 +1189,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Kenya',
@@ -1199,7 +1199,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Lesotho',
@@ -1209,7 +1209,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Madagascar',
@@ -1219,7 +1219,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Malawi',
@@ -1229,7 +1229,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Mauritius',
@@ -1239,7 +1239,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Mozambique',
@@ -1249,7 +1249,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Namibia',
@@ -1259,7 +1259,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Rwanda',
@@ -1269,7 +1269,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Seychelles',
@@ -1279,7 +1279,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Somalia',
@@ -1289,7 +1289,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'South Africa',
@@ -1299,7 +1299,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Luvuyo Lulama Gqeke',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'South Sudan',
@@ -1309,7 +1309,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Sudan',
@@ -1319,7 +1319,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Uganda',
@@ -1329,7 +1329,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. John Wycliffe Kabbs Twijuke',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'United Republic of Tanzania',
@@ -1339,7 +1339,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Zambia',
@@ -1349,7 +1349,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Zimbabwe',
@@ -1359,7 +1359,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Benin',
@@ -1369,7 +1369,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Burkina Faso',
@@ -1379,7 +1379,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Cameroon',
@@ -1389,7 +1389,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Cabo Verde',
@@ -1399,7 +1399,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Central African Republic',
@@ -1409,7 +1409,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Chad',
@@ -1419,7 +1419,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Congo',
@@ -1429,7 +1429,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => "Côte d'Ivoire",
@@ -1439,7 +1439,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Equatorial Guinea',
@@ -1449,7 +1449,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Estanislao Esono Anguesomo',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Gabon',
@@ -1459,7 +1459,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Gambia',
@@ -1469,7 +1469,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Ghana',
@@ -1479,7 +1479,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Guinea',
@@ -1489,7 +1489,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Guinea-Bissau',
@@ -1499,7 +1499,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Liberia',
@@ -1509,7 +1509,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Mali',
@@ -1519,7 +1519,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Sidi Sadio Diallo',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Mauritania',
@@ -1529,7 +1529,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Niger',
@@ -1539,7 +1539,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Nigeria',
@@ -1549,7 +1549,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Mahmoud Sani Ben Tukur',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Sao Tome and Principe',
@@ -1559,7 +1559,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Senegal',
@@ -1569,7 +1569,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Sierra Leone',
@@ -1579,7 +1579,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Togo',
@@ -1589,7 +1589,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Argentina',
@@ -1599,7 +1599,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Gerardo E. Bompadre',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Bolivia (Plurinational State of)',
@@ -1609,7 +1609,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Brazil',
@@ -1619,7 +1619,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Michel Arslanian Neto',
                 'vote_probability_indonesia' => null,
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Chile',
@@ -1629,7 +1629,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Colombia',
@@ -1639,7 +1639,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Mauricio Ramírez Koppel',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Ecuador',
@@ -1649,7 +1649,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Chester David Salazar del Pozo',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Guyana',
@@ -1659,7 +1659,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Paraguay',
@@ -1669,7 +1669,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Peru',
@@ -1679,7 +1679,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Suriname',
@@ -1689,7 +1689,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Uruguay',
@@ -1699,7 +1699,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Gustavo Álvarez Goyoaga',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Venezuela (Bolivarian Republic of)',
@@ -1709,7 +1709,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Antigua and Barbuda',
@@ -1719,7 +1719,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Bahamas',
@@ -1729,7 +1729,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Barbados',
@@ -1739,7 +1739,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Belize',
@@ -1749,7 +1749,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Ms. Anna-Karine Asselin',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Canada',
@@ -1759,7 +1759,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Ms. Anna-Karine Asselin',
                 'vote_probability_indonesia' => null,
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Costa Rica',
@@ -1769,7 +1769,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Cuba',
@@ -1779,7 +1779,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mrs. Mercedes Vázquez González',
                 'vote_probability_indonesia' => null,
                 'council_part' => 3,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Dominica',
@@ -1789,7 +1789,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Dominican Republic',
@@ -1799,7 +1799,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'El Salvador',
@@ -1809,7 +1809,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Grenada',
@@ -1819,7 +1819,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Guatemala',
@@ -1829,7 +1829,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Haiti',
@@ -1839,7 +1839,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Honduras',
@@ -1849,7 +1849,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Jamaica',
@@ -1859,7 +1859,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Mexico',
@@ -1869,7 +1869,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => 'Mr. Dionisio Méndez Mayora',
                 'vote_probability_indonesia' => null,
                 'council_part' => 2,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Nicaragua',
@@ -1879,7 +1879,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Panama',
@@ -1889,7 +1889,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Saint Kitts and Nevis',
@@ -1899,7 +1899,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Saint Lucia',
@@ -1909,7 +1909,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Saint Vincent and the Grenadines',
@@ -1919,7 +1919,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'Trinidad and Tobago',
@@ -1929,7 +1929,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => null,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
             [
                 'state_name' => 'United States',
@@ -1939,7 +1939,7 @@ class StatesSeeder extends Seeder
                 'rep_in_council' => null,
                 'vote_probability_indonesia' => null,
                 'council_part' => 1,
-                'dctp_enum' => null,
+                'dctp_status' => null,
             ],
         ];
 
