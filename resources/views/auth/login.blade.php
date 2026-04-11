@@ -87,7 +87,7 @@
             <span
               class="rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/80 ring-1 ring-white/15 backdrop-blur-sm"
             >
-              192 Negara Anggota
+              193 Negara Anggota
             </span>
             <span
               class="rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/80 ring-1 ring-white/15 backdrop-blur-sm"

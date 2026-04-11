@@ -8,10 +8,21 @@
           <h1 class="text-2xl font-semibold tracking-tight">Dashboard Negara ICAO</h1>
           <p class="mt-1 text-sm text-(--muted-foreground)">Monitoring negara anggota, council part, dan status DCTP</p>
         </div>
-        <div
-          class="rounded-lg border border-(--border) bg-(--secondary) px-3 py-2 text-sm text-(--secondary-foreground)"
-        >
-          Total Data: <span class="font-semibold text-(--foreground)">{{ $states->total() }}</span>
+        <div class="flex items-center gap-2">
+          <div
+            class="rounded-lg border border-(--border) bg-(--secondary) px-3 py-2 text-sm text-(--secondary-foreground)"
+          >
+            Total Data:
+            <span class="font-semibold text-(--foreground)">{{ $states->total() }}</span>
+          </div>
+          <a
+            href="{{ asset('img/' . rawurlencode('Draft Awal Aide Memoire Indonesia.pdf')) }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center rounded-lg border border-(--border) bg-blue-500 px-3 py-2 text-sm font-semibold text-black transition hover:border-(--primary) dark:text-white"
+          >
+            Aide Memoire
+          </a>
         </div>
       </div>
 
@@ -64,11 +75,25 @@
           class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35"
         >
           <option value="">Semua Status DCTP</option>
-          <option value="Sudah Menerima" {{ request('dctp') == 'Sudah Menerima' ? 'selected' : '' }}>Sudah Menerima</option>
-          <option value="Penerima Potensial" {{ request('dctp') == 'Penerima Potensial' ? 'selected' : '' }}>Penerima Potensial</option>
-          <option value="Prioritas Penerima Dewan ICAO" {{ request('dctp') == 'Prioritas Penerima Dewan ICAO' ? 'selected' : '' }}>Prioritas Penerima Dewan ICAO</option>
-          <option value="Kompetitor" {{ request('dctp') == 'Kompetitor' ? 'selected' : '' }}>Kompetitor</option>
-          <option value="Belum Menerima" {{ request('dctp') == 'Belum Menerima' ? 'selected' : '' }}>Belum Menerima</option>
+          <option value="Sudah Menerima" {{ request('dctp') == 'Sudah Menerima' ? 'selected' : '' }}
+            >Sudah Menerima
+          </option>
+          <option
+            value="Penerima Potensial"
+            {{ request('dctp') == 'Penerima Potensial' ? 'selected' : '' }}
+            >Penerima Potensial
+          </option>
+          <option
+            value="Prioritas Penerima Dewan ICAO"
+            {{ request('dctp') == 'Prioritas Penerima Dewan ICAO' ? 'selected' : '' }}
+            >Prioritas Penerima Dewan ICAO
+          </option>
+          <option value="Kompetitor" {{ request('dctp') == 'Kompetitor' ? 'selected' : '' }}
+            >Kompetitor
+          </option>
+          <option value="Belum Menerima" {{ request('dctp') == 'Belum Menerima' ? 'selected' : '' }}
+            >Belum Menerima
+          </option>
         </select>
       </form>
     </div>
@@ -125,8 +150,11 @@
                   </span>
                 </td>
                 <td class="px-4 py-3">
-                  @if($state->dctp_status)
-                    <span class="rounded-full px-2.5 py-1 text-xs font-semibold" style="{{ $dctpStyle }}">
+                  @if ($state->dctp_status)
+                    <span
+                      class="rounded-full px-2.5 py-1 text-xs font-semibold"
+                      style="{{ $dctpStyle }}"
+                    >
                       {{ $state->dctp_status }}
                     </span>
                   @else
@@ -153,7 +181,16 @@
         </table>
       </div>
 
-      <div class="flex justify-end border-t border-(--border) px-4 py-3">{{ $states->onEachSide(1)->links() }}</div>
+      <div class="flex items-center justify-between gap-3 border-t border-(--border) px-4 py-3">
+        <p class="text-sm text-(--muted-foreground)">
+          @if ($states->total() > 0)
+            Showing {{ $states->firstItem() }} to {{ $states->lastItem() }} of {{ $states->total() }}
+          @else
+            Showing 0 of 0
+          @endif
+        </p>
+        {{ $states->onEachSide(1)->links() }}
+      </div>
     </div>
   </section>
 
