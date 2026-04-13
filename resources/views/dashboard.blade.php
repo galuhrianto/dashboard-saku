@@ -83,15 +83,7 @@
             {{ request('dctp') == 'Penerima Potensial' ? 'selected' : '' }}
             >Penerima Potensial
           </option>
-          <option
-            value="Prioritas Penerima Dewan ICAO"
-            {{ request('dctp') == 'Prioritas Penerima Dewan ICAO' ? 'selected' : '' }}
-            >Prioritas Penerima Dewan ICAO
-          </option>
-          <option value="Kompetitor" {{ request('dctp') == 'Kompetitor' ? 'selected' : '' }}
-            >Kompetitor
-          </option>
-          <option value="Belum Menerima" {{ request('dctp') == 'Belum Menerima' ? 'selected' : '' }}
+          <option value="null" {{ request('dctp') == 'null' ? 'selected' : '' }}
             >Belum Menerima
           </option>
         </select>
@@ -108,7 +100,7 @@
               <th class="px-4 py-3 font-semibold">Ibu Kota</th>
               <th class="px-4 py-3 font-semibold">Region</th>
               <th class="px-4 py-3 font-semibold">Part</th>
-              <th class="px-4 py-3 font-semibold">DCTP Status</th>
+              <th class="px-4 py-3 font-semibold">Status Kemitraan</th>
               <th class="px-4 py-3 font-semibold">Aksi</th>
             </tr>
           </thead>
@@ -130,7 +122,9 @@
                                 'Belum Menerima'                => 'background:#f3f4f6;color:#6b7280;',
                             ][$state->dctp_status] ?? '';
                         @endphp
-              <tr class="border-t border-(--border)/80 transition hover:bg-(--accent)/60">
+              <tr 
+               onclick="window.location='{{ route('states.show', $state->id) }}'"
+              class="border-t border-(--border)/80 transition hover:bg-(--accent)/60">
                 <td class="px-4 py-3 text-(--muted-foreground)">
                   {{ ($states->firstItem() ?? 1) + $loop->index }}
                 </td>
@@ -149,18 +143,41 @@
                     @endif
                   </span>
                 </td>
-                <td class="px-4 py-3">
-                  @if ($state->dctp_status)
-                    <span
-                      class="rounded-full px-2.5 py-1 text-xs font-semibold"
-                      style="{{ $dctpStyle }}"
-                    >
-                      {{ $state->dctp_status }}
-                    </span>
-                  @else
-                    <span class="text-(--muted-foreground)">-</span>
-                  @endif
-                </td>
+                <td class="px-4 py-3 space-y-1">
+
+@php
+  $hasDctp = $state->dctp_status;
+  $kerjasama = $state->kerjasamas->first() ?? null;
+@endphp
+
+@if ($hasDctp || $kerjasama)
+
+  <div class="flex flex-wrap gap-1 text-xs font-semibold">
+
+    {{-- DCTP --}}
+    @if ($hasDctp)
+      <span 
+        class="px-2 py-0.5 rounded-full"
+        style="{{ $dctpStyle }}"
+      >
+        DCTP ({{ $state->dctp_status }})
+      </span>
+    @endif
+
+    {{-- Kerjasama --}}
+    @if ($kerjasama)
+      <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
+        {{ $kerjasama->bentuk_kerjasama }}
+      </span>
+    @endif
+
+  </div>
+
+@else
+  <span class="text-xs text-(--muted-foreground)">-</span>
+@endif
+
+</td>
                 <td class="px-4 py-3">
                   <a
                     href="{{ route('states.show', $state->id) }}"

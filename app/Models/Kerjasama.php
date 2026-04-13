@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Direktur;
+use App\Models\Kerjasama;   
+use App\Models\State;
 
 class Kerjasama extends Model
 {

@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Direktur;
+use App\Models\Kerjasama;
+
 
 class State extends Model
 {
@@ -33,9 +36,9 @@ class State extends Model
         'additional_info' => 'array',
     ];
 
-    public function kerjasama()
+    public function kerjasamas()
     {
-        return $this->hasMany(Kerjasama::class);
+        return $this->hasMany(Kerjasama::class, 'state_id');
     }
 
     public function beasiswa()

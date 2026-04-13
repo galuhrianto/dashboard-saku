@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DirekturController;
 use Illuminate\Support\Facades\Route;
 
 // ROOT → redirect ke login
@@ -21,6 +22,18 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [StateController::class, 'dashboard'])->name('dashboard');
     Route::get('/states/{id}', [StateController::class, 'show'])->name('states.show');
+    
+    
+    Route::get('/astacitapresiden', function () {
+        return view('astacita');
+    })->name('astacita');
+
+    Route::get('/ICAOheadoffice', function () {
+        return view('icaoheadoffice');
+    })->name('icaoheadoffice');
+
+    Route::get('/states/{id}/directors', [DirekturController::class, 'show'])->name('direkturs.show');
+
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

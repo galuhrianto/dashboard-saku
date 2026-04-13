@@ -84,7 +84,7 @@
     </div>
 
     <!-- 2. Core Metrics Strip -->
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {{-- <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <div
         class="rounded-2xl border border-(--border) bg-(--card) p-5 shadow-sm transition hover:shadow-md"
       >
@@ -121,14 +121,16 @@
           title="{{ $state->currency }}"
         >{{ $state->currency ?: '-' }}</p>
       </div>
-    </div>
+    </div> --}}
 
     <!-- 2.5 Director General Profile Grid -->
     <div class="rounded-2xl border border-(--border) bg-(--card) shadow-sm">
       <div class="border-b border-(--border) px-6 py-4">
+        <a href="{{ route('direkturs.show', $state->id) }}" class="text-sm font-bold tracking-tight text-(--primary) hover:underline">
         <h2 class="text-base font-bold tracking-tight text-(--foreground)">
-          Profil Directorate General
+          Profil Directorate General Civil Aviation (DGCA)
         </h2>
+        <a>
       </div>
       <div class="p-6">
         <div class="grid grid-cols-1 gap-5 md:grid-cols-3">

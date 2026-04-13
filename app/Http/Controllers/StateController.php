@@ -9,7 +9,12 @@ class StateController extends Controller
 {
     public function dashboard(Request $request)
     {
-        $query = State::with('direktur');
+       $query = State::with([
+            'direktur',
+            'kerjasamas' => function ($q) {
+                $q->where('status', 'Aktif');
+            }
+        ]);
 
         // 🔍 SEARCH (negara + direktur)
         if ($request->search) {
@@ -34,8 +39,8 @@ class StateController extends Controller
         }
 
         // 📊 FILTER DCTP
-        if ($request->dctp) {
-            $query->where('dctp_status', $request->dctp);
+        if ($request->dctp == 'null') {
+            $query->whereNull('dctp_status');
         }
 
         $states = $query
@@ -49,7 +54,7 @@ class StateController extends Controller
     // 🔍 Detail Negara
     public function show($id)
     {
-        $state = State::with(['kerjasama', 'beasiswa', 'direktur'])
+        $state = State::with(['kerjasamas', 'beasiswa', 'direktur'])
             ->findOrFail($id);
 
         return view('states.show', compact('state'));
