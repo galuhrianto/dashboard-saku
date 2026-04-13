@@ -12,6 +12,7 @@
   <div class="mx-auto w-full max-w-7xl p-4 sm:p-6">
     @yield ('content')
   </div>
+  @include ('partials.footer')
 
   @yield ('scripts')
 </body>

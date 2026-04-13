@@ -126,7 +126,7 @@
     <!-- 2.5 Director General Profile Grid -->
     <div class="rounded-2xl border border-(--border) bg-(--card) shadow-sm">
       <div class="border-b border-(--border) px-6 py-4">
-        <a href="{{ route('direkturs.show', $state->id) }}" class="text-sm font-bold tracking-tight text-(--primary) hover:underline">
+        {{-- <a href="{{ route('direkturs.show', $state->id) }}" class="text-sm font-bold tracking-tight text-(--primary) hover:underline"> --}}
         <h2 class="text-base font-bold tracking-tight text-(--foreground)">
           Profil Directorate General Civil Aviation (DGCA)
         </h2>
@@ -205,19 +205,30 @@
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <!-- Kerja Sama -->
               <div>
-                <h3
-                  class="mb-3 text-xs font-bold tracking-wider text-(--muted-foreground) uppercase"
-                >
-                  Kerja Sama
-                </h3>
-                <ul class="space-y-2">
-                  <li
-                    class="rounded-lg border border-dashed border-(--border) px-3 py-2.5 text-center text-xs text-(--muted-foreground)"
-                  >
-                    Belum ada data
-                  </li>
-                </ul>
-              </div>
+  <h3 class="mb-3 text-xs font-bold tracking-wider text-(--muted-foreground) uppercase">
+    Kerja Sama
+  </h3>
+
+  <ul class="space-y-3">
+    @forelse ($state->kerjasamas as $item)
+      <li class="rounded-lg border border-(--border) p-3 hover:bg-(--accent) transition">
+
+        <p class="text-sm font-semibold text-(--foreground)">
+          {{ $item->bentuk_kerjasama }}
+        </p>
+
+        <p class="mt-1 text-xs text-(--muted-foreground)">
+          {{ $item->deskripsi }}
+        </p>
+
+      </li>
+    @empty
+      <li class="rounded-lg border border-dashed border-(--border) px-3 py-2.5 text-center text-xs text-(--muted-foreground)">
+        Belum ada data
+      </li>
+    @endforelse
+  </ul>
+</div>
 
               <!-- Beasiswa -->
               <div>
