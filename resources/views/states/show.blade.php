@@ -128,7 +128,7 @@
       <div class="border-b border-(--border) px-6 py-4">
         {{-- <a href="{{ route('direkturs.show', $state->id) }}" class="text-sm font-bold tracking-tight text-(--primary) hover:underline"> --}}
         <h2 class="text-base font-bold tracking-tight text-(--foreground)">
-          Profil Directorate General Civil Aviation (DGCA)
+          Profil Director General Civil Aviation (DGCA)
         </h2>
         <a>
       </div>

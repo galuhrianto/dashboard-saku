@@ -39,9 +39,36 @@ class StateController extends Controller
         }
 
         // 📊 FILTER DCTP
+        if ($request->dctp == 'Sudah Menerima') {
+            $query->where('dctp_status', 'Sudah Menerima');
+        }
+
+        if ($request->dctp == 'Penerima Potensial') {
+            $query->where('dctp_status', 'Penerima Potensial');
+        }
+
         if ($request->dctp == 'null') {
             $query->whereNull('dctp_status');
         }
+
+        
+        
+        if ($request->kerjasama) {
+
+    if ($request->kerjasama === 'none') {
+        $query->whereDoesntHave('kerjasamas', function ($q) {
+            $q->where('status', 'Aktif');
+        });
+    } 
+    
+    else {
+        $query->whereHas('kerjasamas', function ($q) use ($request) {
+            $q->where('bentuk_kerjasama', $request->kerjasama)
+              ->where('status', 'Aktif');
+        });
+    }
+
+}
 
         $states = $query
             ->orderBy('state_name')

@@ -1,4 +1,4 @@
-@extends ('layouts.app')
+@extends ('layouts.admin.app')
 
 @section ('content')
   <section class="space-y-6">
@@ -18,7 +18,7 @@
 
       <form
         method="POST"
-        action="{{ route('users.store') }}"
+        action="{{ route('admin.users.store') }}"
         class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3"
       >
         @csrf
@@ -63,7 +63,7 @@
                 <td class="px-4 py-3 text-(--muted-foreground)">{{ $user->username }}</td>
 
                 <td class="px-4 py-3">
-                  <form method="POST" action="{{ route('users.update', $user->id) }}">
+                  <form method="POST" action="{{ route('admin.users.update', $user->id) }}">
                     @csrf
                     @method ('PUT')
 
@@ -86,7 +86,7 @@
 
                 <td class="px-4 py-3">
                   @if ($user->role_id != 1)
-                    <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                    <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}">
                       @csrf
                       @method ('DELETE')
 

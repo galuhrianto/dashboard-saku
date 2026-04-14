@@ -32,18 +32,13 @@
             @auth
                 @if (auth()->user()->role_id == 1)
                     <div class="relative hidden sm:block">
-                        <button id="userMenuButton" type="button"
+                        <button type="button" onclick="window.location='{{ route('admin.dashboard') }}'"
+                            id="userMenuButton"
                             class="inline-flex h-8 items-center rounded-(--radius) border border-(--border) bg-(--secondary) px-3 py-1.5 text-sm font-medium text-(--foreground) transition hover:border-(--primary)">
                             {{ auth()->user()->name }}
                         </button>
 
-                        <div id="dropdownMenu"
-                            class="absolute right-0 mt-2 hidden w-44 rounded-xl border border-(--border) bg-(--card) p-1 shadow-lg">
-                            <a href="{{ route('users.index') }}"
-                                class="block rounded-lg px-3 py-2 text-sm transition hover:bg-(--accent)">
-                                User Management
-                            </a>
-                        </div>
+
                     </div>
                 @endif
 
@@ -80,50 +75,44 @@
     </div>
 
     <!-- MOBILE MENU -->
-    <div id="mobileMenu" 
-     class="hidden sm:hidden absolute left-0 top-full w-full px-4 pt-2 z-40">
-    
-    <div class="rounded-xl border border-(--border) bg-(--card) shadow-lg p-3 space-y-2">
+    <div id="mobileMenu" class="hidden sm:hidden absolute left-0 top-full w-full px-4 pt-2 z-40">
 
-        <!-- MENU -->
-        <a href="{{ route('astacita') }}"
-           class="block rounded-lg px-3 py-2 text-sm text-(--foreground) hover:bg-(--accent) transition">
-            Asta Cita
-        </a>
+        <div class="rounded-xl border border-(--border) bg-(--card) shadow-lg p-3 space-y-2">
 
-        <a href="{{ route('icaoheadoffice') }}"
-           class="block rounded-lg px-3 py-2 text-sm text-(--foreground) hover:bg-(--accent) transition">
-            The ICAO Head Office
-        </a>
+            <!-- MENU -->
+            <a href="{{ route('astacita') }}"
+                class="block rounded-lg px-3 py-2 text-sm text-(--foreground) hover:bg-(--accent) transition">
+                Asta Cita
+            </a>
 
-        @auth
-            <div class="mt-3 border-t border-(--border) pt-3">
+            <a href="{{ route('icaoheadoffice') }}"
+                class="block rounded-lg px-3 py-2 text-sm text-(--foreground) hover:bg-(--accent) transition">
+                The ICAO Head Office
+            </a>
 
-                <!-- USER -->
-                <p class="px-3 text-xs text-(--muted-foreground)">
-                    {{ auth()->user()->name }}
-                </p>
+            @auth
+                <div class="mt-3 border-t border-(--border) pt-3">
 
-                @if (auth()->user()->role_id == 1)
-                    <a href="{{ route('users.index') }}"
-                       class="block mt-2 rounded-lg px-3 py-2 text-sm hover:bg-(--accent)">
-                        User Management
-                    </a>
-                @endif
+                    @if (auth()->user()->role_id == 1)
+                        <a href="{{ route('admin.dashboard') }}"
+       class="block mt-2 rounded-lg px-3 py-2 text-sm text-(--foreground) hover:bg-(--accent) transition">
+        Admin Dashboard
+    </a>
+                    @endif
 
-                <form method="POST" action="{{ route('logout') }}" class="mt-2">
-                    @csrf
-                    <button
-                        class="w-full text-left rounded-lg px-3 py-2 text-sm text-red-500 hover:bg-red-500/10 transition">
-                        Logout
-                    </button>
-                </form>
+                    <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                        @csrf
+                        <button
+                            class="w-full text-left rounded-lg px-3 py-2 text-sm text-red-500 hover:bg-red-500/10 transition">
+                            Logout
+                        </button>
+                    </form>
 
-            </div>
-        @endauth
+                </div>
+            @endauth
 
+        </div>
     </div>
-</div>
 </nav>
 
 <script>
@@ -188,13 +177,13 @@
     }
 
     document.addEventListener('click', function(e) {
-    if (
-        mobileMenu && 
-        mobileMenuButton &&
-        !e.target.closest('#mobileMenu') &&
-        !e.target.closest('#mobileMenuButton')
-    ) {
-        mobileMenu.classList.add('hidden');
-    }
-});
+        if (
+            mobileMenu &&
+            mobileMenuButton &&
+            !e.target.closest('#mobileMenu') &&
+            !e.target.closest('#mobileMenuButton')
+        ) {
+            mobileMenu.classList.add('hidden');
+        }
+    });
 </script>
