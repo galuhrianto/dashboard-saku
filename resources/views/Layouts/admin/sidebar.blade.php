@@ -1,29 +1,30 @@
 <aside id="sidebar"
-  class="bg-(--card) border-r border-(--border)
+    class="bg-(--card) border-r border-(--border)
          min-h-screen w-64 p-5
          fixed top-0 left-0 md:relative
          z-50
          -translate-x-full md:translate-x-0
          transition-transform duration-300">
-  <!-- TITLE -->
-  <div class="mb-8">
+    <!-- TITLE -->
+    <div class="mb-8">
 
-    <a href="{{ route('dashboard') }}">
-           
-    <h2 class="text-(--foreground) font-semibold tracking-tight">
-      One on One Diplomacy Ebook
-    </h2> </a>
-  </div>
+        <a href="{{ route('dashboard') }}">
 
-  <!-- MENU -->
-  <nav class="space-y-1 text-sm">
+            <h2 class="text-(--foreground) font-semibold tracking-tight">
+                One on One Diplomacy Ebook
+            </h2>
+        </a>
+    </div>
 
-    <!-- DASHBOARD -->
-    <a href="/admin/dashboard"
-       class="block px-3 py-2 rounded-lg font-medium text-(--foreground)
+    <!-- MENU -->
+    <nav class="space-y-1 text-sm">
+
+        <!-- DASHBOARD -->
+        <a href="/admin/dashboard"
+            class="block px-3 py-2 rounded-lg font-medium text-(--foreground)
               hover:bg-(--secondary) transition">
-      Dashboard
-    </a>
+            Dashboard
+        </a>
 
     <!-- NEGARA -->
     {{-- <a href="#"
@@ -39,20 +40,25 @@
       Kerjasama
     </a> --}}
 
-    
-    <a href="{{ route('admin.users.index') }}"
-       class="block px-3 py-2 rounded-lg text-(--muted-foreground)
+        <a href="{{ route('admin.users.index') }}"
+            class="block px-3 py-2 rounded-lg text-(--muted-foreground)
               hover:bg-(--secondary) hover:text-(--foreground) transition">
-      User Management
-    </a>
+            User Management
+        </a>
 
-    <a href="{{ route('admin.media.index') }}"
-       class="block px-3 py-2 rounded-lg text-(--muted-foreground)
+        <a href="{{ route('admin.media.index') }}"
+            class="block px-3 py-2 rounded-lg text-(--muted-foreground)
               hover:bg-(--secondary) hover:text-(--foreground) transition">
-      Media
-    </a>
+            Media
+        </a>
+
+        <a href="{{ route('admin.head_offices.index') }}"
+            class="block px-3 py-2 rounded-lg text-(--muted-foreground)
+              hover:bg-(--secondary) hover:text-(--foreground) transition">
+            Head Office
+        </a>
 
 
-  </nav>
+    </nav>
 
 </aside>

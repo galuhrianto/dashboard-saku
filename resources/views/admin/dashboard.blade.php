@@ -9,6 +9,7 @@
             <p class="text-sm text-(--muted-foreground)">Total Negara</p>
             <h2 class="text-2xl text-(--foreground) font-semibold mt-1">{{ $totalStates }}</h2>
         </div>
+<<<<<<< HEAD
 
         <!-- TOTAL KERJA SAMA -->
         <div class="rounded-2xl border border-(--border) bg-(--card) p-4 shadow-sm">
@@ -17,6 +18,8 @@
                     {{ $kerjasamas->total() }}
                 </h2>
             </div>
+=======
+>>>>>>> b74b6ccb188987a638a93310be21ff567824ea5e
 
 
     </div>
@@ -39,8 +42,12 @@
 
                 <tbody>
                     @forelse ($states as $state)
+<<<<<<< HEAD
                         <tr class="border-t border-(--border)/80 hover:bg-(--accent)/60"
                             onclick="window.location='{{ route('admin.states.show', $state) }}'">
+=======
+                        <tr class="border-t border-(--border)/80 hover:bg-(--accent)/60">
+>>>>>>> b74b6ccb188987a638a93310be21ff567824ea5e
 
                             <!-- NO -->
                             <td class="px-4 py-3 text-(--muted-foreground)">
@@ -81,7 +88,7 @@
 
                                                     $item->bentuk_kerjasama === 'DCTP' && $item->status === 'Kompetitor'
                                                         => 'background:#fee2e2;color:#b91c1c;',
-                                                    // ASA
+                                                   // ASA
                                                     $item->bentuk_kerjasama === 'ASA'
                                                         => 'background:#e0f2fe;color:#0369a1;',
                                                     // default

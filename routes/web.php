@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\StateController as AdminStateController;
 use App\Http\Controllers\Admin\DirekturController as AdminDirekturController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HeadOfficeController;
 
 // ROOT → redirect ke login
 Route::get('/', function () {
@@ -27,8 +28,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [StateController::class, 'dashboard'])->name('dashboard');
     Route::get('/states/{id}', [StateController::class, 'show'])->name('states.show');
-    
-    
+
     Route::get('/astacitapresiden', function () {
         return view('astacita');
     })->name('astacita');
@@ -38,21 +38,22 @@ Route::middleware('auth')->group(function () {
     })->name('icaoheadoffice');
 
     Route::get('/states/{id}/directors', [DirekturController::class, 'show'])->name('direkturs.show');
-
 });
 
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
+        Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-    Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
-    Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
-    Route::put('/users/{id}', [UserController::class, 'update'])->name('admin.users.update');
-    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->name('admin.dashboard');
+        Route::resource('head_offices', HeadOfficeController::class);
 
-     Route::get('/states/{state}', [AdminStateController::class, 'show'])
-        ->name('admin.states.show');
+     Route::get('/states/{state}', [AdminStateController::class, 'show'])->name('admin.states.show');
     
     Route::get('/states/{state}/edit', [AdminStateController::class, 'edit'])->name('admin.states.edit');
     Route::put('/states/{state}', [AdminStateController::class, 'update'])->name('admin.states.update');
@@ -75,19 +76,13 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::put('/kerjasama/{kerjasama}', [KerjasamaController::class, 'update'])->name('admin.kerjasama.update');
     Route::delete('/kerjasama/{kerjasama}', [KerjasamaController::class, 'destroy'])->name('admin.kerjasama.destroy');
 
+        Route::get('/media', [MediaController::class, 'index'])->name('media.index');
 
-    Route::get('/media', [MediaController::class, 'index'])->name('admin.media.index');
+        Route::post('/media/aidememoire', [MediaController::class, 'uploadAidememoire'])->name('media.upload.aidememoire');
 
-    Route::post('/media/aidememoire', [MediaController::class, 'uploadAidememoire'])
-        ->name('admin.media.upload.aidememoire');
+        Route::post('/media/astacita', [MediaController::class, 'uploadAstaCita'])->name('media.upload.astacita');
 
-    Route::post('/media/astacita', [MediaController::class, 'uploadAstaCita'])
-        ->name('admin.media.upload.astacita');
+        Route::post('/media/office', [MediaController::class, 'storeOffice'])->name('media.office.store');
 
-    Route::post('/media/office', [MediaController::class, 'storeOffice'])
-        ->name('admin.media.office.store');
-
-    Route::delete('/media/office/{office}', [MediaController::class, 'destroyOffice'])
-        ->name('admin.media.office.destroy');
-
-});
+        Route::delete('/media/office/{office}', [MediaController::class, 'destroyOffice'])->name('media.office.destroy');
+    });
