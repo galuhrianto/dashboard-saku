@@ -7,6 +7,8 @@ use App\Http\Controllers\DirekturController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KerjasamaController;
 use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\StateController as AdminStateController;
+use App\Http\Controllers\Admin\DirekturController as AdminDirekturController;
 use Illuminate\Support\Facades\Route;
 
 // ROOT → redirect ke login
@@ -49,12 +51,29 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('admin.dashboard');
 
+     Route::get('/states/{state}', [AdminStateController::class, 'show'])
+        ->name('admin.states.show');
+    
+    Route::get('/states/{state}/edit', [AdminStateController::class, 'edit'])->name('admin.states.edit');
+    Route::put('/states/{state}', [AdminStateController::class, 'update'])->name('admin.states.update');
+    Route::delete('/states/{state}', [AdminStateController::class, 'destroy'])->name('admin.states.destroy');
+
+    Route::post('/states/{state}/direktur', [AdminDirekturController::class, 'store'])
+        ->name('admin.states.direktur.store');
+
+    Route::delete('/direktur/{direktur}', [AdminDirekturController::class, 'destroy'])
+        ->name('admin.direktur.destroy');
+
+        Route::post('/states/{state}/kerjasamas', [KerjasamaController::class, 'storeFromState'])
+    ->name('admin.states.kerjasamas.store');
+
+
     Route::get('/kerjasama', [KerjasamaController::class, 'index'])->name('admin.kerjasama.index');
     Route::get('/kerjasama/create', [KerjasamaController::class, 'create'])->name('admin.kerjasama.create');
     Route::post('/kerjasama', [KerjasamaController::class, 'store'])->name('admin.kerjasama.store');
-    Route::get('/kerjasama/{id}/edit', [KerjasamaController::class, 'edit'])->name('admin.kerjasama.edit');
-    Route::put('/kerjasama/{id}', [KerjasamaController::class, 'update'])->name('admin.kerjasama.update');
-    Route::delete('/kerjasama/{id}', [KerjasamaController::class, 'destroy'])->name('admin.kerjasama.destroy');
+    Route::get('/kerjasama/{kerjasama}/edit', [KerjasamaController::class, 'edit'])->name('admin.kerjasama.edit');
+    Route::put('/kerjasama/{kerjasama}', [KerjasamaController::class, 'update'])->name('admin.kerjasama.update');
+    Route::delete('/kerjasama/{kerjasama}', [KerjasamaController::class, 'destroy'])->name('admin.kerjasama.destroy');
 
 
     Route::get('/media', [MediaController::class, 'index'])->name('admin.media.index');

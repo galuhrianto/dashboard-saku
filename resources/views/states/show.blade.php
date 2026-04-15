@@ -133,24 +133,35 @@
             <div class="p-6">
                 <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
                     <div
-                        class="flex flex-col items-center justify-center rounded-xl border border-dashed border-(--border) bg-(--secondary)/30 p-5 text-center">
-                        <div
-                            class="flex h-20 w-20 items-center justify-center rounded-full border border-(--border) bg-(--secondary) text-sm font-bold text-(--muted-foreground)">
-                            FOTO
-                        </div>
-                        <p class="mt-3 text-xs font-medium text-(--muted-foreground)">Foto belum tersedia</p>
-                    </div>
+    class="flex flex-col items-center justify-center rounded-xl border border-dashed border-(--border) bg-(--secondary)/30 p-5 text-center overflow-hidden">
+
+    @if ($state->direktur && $state->direktur->photo)
+        <img src="{{ asset('storage/' . $state->direktur->photo) }}"
+             class="w-full max-w-full object-cover rounded-lg">
+        
+    @else
+        <div
+            class="flex h-20 w-20 items-center justify-center rounded-full border border-(--border) bg-(--secondary) text-sm font-bold text-(--muted-foreground)">
+            FOTO
+        </div>
+
+        <p class="mt-3 text-xs font-medium text-(--muted-foreground)">
+            Foto belum tersedia
+        </p>
+    @endif
+
+</div>
 
                     <div class="rounded-xl border border-(--border) bg-(--secondary)/20 p-4 md:col-span-2">
                         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
                             <div>
                                 <p class="text-[11px] font-bold tracking-wider text-(--muted-foreground) uppercase">Nama</p>
-                                <p class="mt-1 text-sm font-semibold">-</p>
+                                <p class="mt-1 text-sm font-semibold">{{$state->direktur->nama ?? '-'}}</p>
                             </div>
                             <div>
                                 <p class="text-[11px] font-bold tracking-wider text-(--muted-foreground) uppercase">Jabatan
                                 </p>
-                                <p class="mt-1 text-sm font-semibold">-</p>
+                                <p class="mt-1 text-sm font-semibold">{{$state->direktur->jabatan ?? '-'}}</p>
                             </div>
                             <div>
                                 <p class="text-[11px] font-bold tracking-wider text-(--muted-foreground) uppercase">Masa
@@ -165,7 +176,7 @@
                         </div>
                         <div
                             class="mt-4 rounded-lg border border-dashed border-(--border) px-3 py-2 text-xs text-(--muted-foreground)">
-                            Data profil Director General belum diinput.
+                            Data profil Director General belum semua diinput.
                         </div>
                     </div>
                 </div>
@@ -249,7 +260,7 @@
                         </div>
                         <div
                             class="mt-5 rounded-lg border border-dashed border-(--border) px-3 py-2 text-xs text-(--muted-foreground)">
-                            Data Director General, keterlibatan kerja sama, dan beasiswa disembunyikan sementara
+                            Data Beasiswa disembunyikan sementara
                             sampai data final diinput.
                         </div>
                     </div>

@@ -26,18 +26,18 @@
     </a>
 
     <!-- NEGARA -->
-    <a href="#"
+    {{-- <a href="#"
        class="block px-3 py-2 rounded-lg text-(--muted-foreground)
               hover:bg-(--secondary) hover:text-(--foreground) transition disabled">
       Manajemen Negara
-    </a>
+    </a> --}}
 
     <!-- KERJASAMA -->
-    <a href="/admin/kerjasama"
+    {{-- <a href="/admin/kerjasama"
        class="block px-3 py-2 rounded-lg text-(--muted-foreground)
               hover:bg-(--secondary) hover:text-(--foreground) transition">
       Kerjasama
-    </a>
+    </a> --}}
 
     
     <a href="{{ route('admin.users.index') }}"

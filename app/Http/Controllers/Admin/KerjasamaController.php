@@ -40,6 +40,25 @@ class KerjasamaController extends Controller
             ->with('success', 'Data berhasil ditambahkan');
     }
 
+    public function storeFromState(Request $request, State $state)
+{
+    $request->validate([
+        'bentuk_kerjasama' => 'required',
+        'status' => 'nullable',
+        'deskripsi' => 'nullable',
+    ]);
+
+    $state->kerjasamas()->create([
+        'bentuk_kerjasama' => $request->bentuk_kerjasama,
+        'status' => $request->status,
+        'deskripsi' => $request->deskripsi,
+    ]);
+
+    return back()->with('success', 'Data berhasil ditambahkan');
+}
+
+    
+
     public function edit(Kerjasama $kerjasama)
     {
         $states = State::orderBy('state_name')->get();

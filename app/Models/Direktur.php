@@ -10,6 +10,7 @@ class Direktur extends Model
         'nama',
         'jabatan',
         'state_id',
+        'photo',
     ];
 
     public function state()

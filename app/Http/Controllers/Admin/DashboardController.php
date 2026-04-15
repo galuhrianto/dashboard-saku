@@ -12,12 +12,15 @@ class DashboardController extends Controller
     {
         $totalStates = State::count();
 
-
         $states = State::with('kerjasamas')->latest()->paginate(10);
+        $kerjasamas = Kerjasama::with('state')->latest()->paginate(10);
 
         return view('admin.dashboard', compact(
             'totalStates',
-            'states'
+            'states',
+            'kerjasamas'
         ));
     }
+
+    
 }
