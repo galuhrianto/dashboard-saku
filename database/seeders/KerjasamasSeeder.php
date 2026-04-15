@@ -96,7 +96,7 @@ foreach ($asaCountries as $country) {
     $data[] = [
         'bentuk_kerjasama' => 'ASA',
         'deskripsi' => 'Perjanjian layanan udara bilateral',
-        'status' => 'Aktif',
+        'status' => null,
         'state_id' => $states[$country],
         'created_at' => now(),
         'updated_at' => now(),

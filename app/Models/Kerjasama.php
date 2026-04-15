@@ -10,8 +10,10 @@ use App\Models\State;
 class Kerjasama extends Model
 {
     protected $fillable = [
-        'bentuk_kerjasama',
         'state_id',
+        'bentuk_kerjasama',
+        'status',
+        'deskripsi'
     ];
 
     public function state()

@@ -5,6 +5,8 @@ use App\Http\Controllers\StateController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DirekturController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\KerjasamaController;
+use App\Http\Controllers\Admin\MediaController;
 use Illuminate\Support\Facades\Route;
 
 // ROOT → redirect ke login
@@ -38,6 +40,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+
     Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
     Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('admin.users.update');
@@ -46,5 +49,26 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('admin.dashboard');
 
+    Route::get('/kerjasama', [KerjasamaController::class, 'index'])->name('admin.kerjasama.index');
+    Route::get('/kerjasama/create', [KerjasamaController::class, 'create'])->name('admin.kerjasama.create');
+    Route::post('/kerjasama', [KerjasamaController::class, 'store'])->name('admin.kerjasama.store');
+    Route::get('/kerjasama/{id}/edit', [KerjasamaController::class, 'edit'])->name('admin.kerjasama.edit');
+    Route::put('/kerjasama/{id}', [KerjasamaController::class, 'update'])->name('admin.kerjasama.update');
+    Route::delete('/kerjasama/{id}', [KerjasamaController::class, 'destroy'])->name('admin.kerjasama.destroy');
+
+
+    Route::get('/media', [MediaController::class, 'index'])->name('admin.media.index');
+
+    Route::post('/media/aidememoire', [MediaController::class, 'uploadAidememoire'])
+        ->name('admin.media.upload.aidememoire');
+
+    Route::post('/media/astacita', [MediaController::class, 'uploadAstaCita'])
+        ->name('admin.media.upload.astacita');
+
+    Route::post('/media/office', [MediaController::class, 'storeOffice'])
+        ->name('admin.media.office.store');
+
+    Route::delete('/media/office/{office}', [MediaController::class, 'destroyOffice'])
+        ->name('admin.media.office.destroy');
 
 });

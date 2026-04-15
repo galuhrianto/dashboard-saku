@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\State;
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class StateController extends Controller
@@ -11,9 +12,7 @@ class StateController extends Controller
     {
        $query = State::with([
             'direktur',
-            'kerjasamas' => function ($q) {
-                $q->where('status', 'Aktif');
-            }
+            'kerjasamas'
         ]);
 
         // 🔍 SEARCH (negara + direktur)
@@ -38,44 +37,54 @@ class StateController extends Controller
             $query->where('icao_region', $request->region);
         }
 
-        // 📊 FILTER DCTP
-        if ($request->dctp == 'Sudah Menerima') {
-            $query->where('dctp_status', 'Sudah Menerima');
-        }
+        if ($request->kemitraan) {
 
-        if ($request->dctp == 'Penerima Potensial') {
-            $query->where('dctp_status', 'Penerima Potensial');
-        }
-
-        if ($request->dctp == 'null') {
-            $query->whereNull('dctp_status');
-        }
-
-        
-        
-        if ($request->kerjasama) {
-
-    if ($request->kerjasama === 'none') {
-        $query->whereDoesntHave('kerjasamas', function ($q) {
-            $q->where('status', 'Aktif');
-        });
+    // 👉 Belum ada kerjasama
+    if ($request->kemitraan === 'none') {
+        $query->whereDoesntHave('kerjasamas');
     } 
-    
     else {
-        $query->whereHas('kerjasamas', function ($q) use ($request) {
-            $q->where('bentuk_kerjasama', $request->kerjasama)
-              ->where('status', 'Aktif');
+
+        [$bentuk, $status] = explode('|', $request->kemitraan);
+
+        $query->whereHas('kerjasamas', function ($q) use ($bentuk, $status) {
+            $q->where('bentuk_kerjasama', $bentuk);
+
+            if ($status !== 'null') {
+                $q->where('status', $status);
+            }
         });
     }
-
 }
+
+
 
         $states = $query
             ->orderBy('state_name')
             ->paginate(12)
             ->withQueryString();
 
-        return view('dashboard', compact('states'));
+
+
+            $kemitraanList = \DB::table('kerjasamas')
+    ->select('bentuk_kerjasama', 'status')
+    ->distinct()
+    ->get()
+    ->map(function ($item) {
+        return [
+            'value' => $item->status
+    ? $item->bentuk_kerjasama . '|' . $item->status
+    : $item->bentuk_kerjasama . '|null',
+            'label' => $item->status
+    ? $item->bentuk_kerjasama . ' - ' . $item->status
+    : $item->bentuk_kerjasama,
+        ];
+    });
+
+        $aidememoire = Media::where('type', 'aidememoire')->first();
+
+
+        return view('dashboard', compact('states', 'kemitraanList', 'aidememoire'));
     }
 
     // 🔍 Detail Negara

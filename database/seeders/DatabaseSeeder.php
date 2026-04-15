@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             DirektursSeeder::class,
             InformasiUmumSeeder::class,
             DctpSeeder::class,
-
+            MediaSeeder::class,
         ]);
     }
 }

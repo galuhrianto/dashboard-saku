@@ -33,24 +33,25 @@
     </a>
 
     <!-- KERJASAMA -->
-    <a href="#"
+    <a href="/admin/kerjasama"
        class="block px-3 py-2 rounded-lg text-(--muted-foreground)
               hover:bg-(--secondary) hover:text-(--foreground) transition">
       Kerjasama
     </a>
 
-    <!-- ASTA CITA -->
-    <a href="#"
-       class="block px-3 py-2 rounded-lg text-(--muted-foreground)
-              hover:bg-(--secondary) hover:text-(--foreground) transition">
-      Asta Cita
-    </a>
-
+    
     <a href="{{ route('admin.users.index') }}"
        class="block px-3 py-2 rounded-lg text-(--muted-foreground)
               hover:bg-(--secondary) hover:text-(--foreground) transition">
       User Management
     </a>
+
+    <a href="{{ route('admin.media.index') }}"
+       class="block px-3 py-2 rounded-lg text-(--muted-foreground)
+              hover:bg-(--secondary) hover:text-(--foreground) transition">
+      Media
+    </a>
+
 
   </nav>
 
