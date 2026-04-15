@@ -99,7 +99,7 @@
 
         <!-- ================= ICAO OFFICE ================= -->
 
-        <div class="rounded-2xl border border-(--border) bg-(--card) p-5 shadow-sm md:col-span-2">
+        {{-- <div class="rounded-2xl border border-(--border) bg-(--card) p-5 shadow-sm md:col-span-2">
 
 
             <h2 class="text-sm font-semibold text-(--foreground) mb-4">ICAO Head Office</h2>
@@ -196,7 +196,7 @@
             </div>
 
 
-        </div>
+        </div> --}}
 
     </div>
 @endsection

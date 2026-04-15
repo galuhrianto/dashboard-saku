@@ -70,4 +70,10 @@ class HeadOfficeController extends Controller
 
         return redirect()->route('admin.head_offices.index')->with('success', 'Data berhasil dihapus.');
     }
+
+    public function show()
+    {
+        $tree = HeadOffice::whereNull('parent_id')->with('children')->get();
+        return view('admin.head_offices.show', compact('tree'));
+    }
 }

@@ -9,21 +9,40 @@
             <p class="text-sm text-(--muted-foreground)">Total Negara</p>
             <h2 class="text-2xl text-(--foreground) font-semibold mt-1">{{ $totalStates }}</h2>
         </div>
-<<<<<<< HEAD
 
         <!-- TOTAL KERJA SAMA -->
         <div class="rounded-2xl border border-(--border) bg-(--card) p-4 shadow-sm">
-                <p class="text-sm text-(--muted-foreground)">Total Kerjasama</p>
-                <h2 class="text-2xl text-(--foreground) font-semibold mt-1">
-                    {{ $kerjasamas->total() }}
-                </h2>
-            </div>
-=======
->>>>>>> b74b6ccb188987a638a93310be21ff567824ea5e
+            <p class="text-sm text-(--muted-foreground)">Total Kerjasama</p>
+            <h2 class="text-2xl text-(--foreground) font-semibold mt-1">
+                {{ $totalKerjasamas }}
+            </h2>
+        </div>
 
 
     </div>
 
+
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+
+    <!-- SEARCH -->
+    <form method="GET" id="searchForm" class="w-full md:w-auto">
+        <input
+            type="text"
+            name="search"
+            id="searchInput"
+            value="{{ request('search') }}"
+            placeholder="Cari negara..."
+            class="w-full md:w-80 rounded-lg border border-(--border) bg-(--secondary)/40 px-3 py-2 text-sm text-(--foreground) placeholder:text-(--muted-foreground) focus:outline-none focus:ring-2 focus:ring-(--ring)/30"
+        >
+    </form>
+
+    <!-- BUTTON TAMBAH -->
+    <a href="{{ route('admin.states.create') }}"
+       class="inline-flex items-center justify-center rounded-lg bg-(--primary) text-white px-4 py-2 text-sm hover:opacity-90 transition">
+        + Tambah Negara
+    </a>
+
+</div>
     <div class="overflow-hidden rounded-2xl border border-(--border) bg-(--card) shadow-sm">
 
 
@@ -42,12 +61,9 @@
 
                 <tbody>
                     @forelse ($states as $state)
-<<<<<<< HEAD
                         <tr class="border-t border-(--border)/80 hover:bg-(--accent)/60"
                             onclick="window.location='{{ route('admin.states.show', $state) }}'">
-=======
-                        <tr class="border-t border-(--border)/80 hover:bg-(--accent)/60">
->>>>>>> b74b6ccb188987a638a93310be21ff567824ea5e
+
 
                             <!-- NO -->
                             <td class="px-4 py-3 text-(--muted-foreground)">
@@ -88,7 +104,7 @@
 
                                                     $item->bentuk_kerjasama === 'DCTP' && $item->status === 'Kompetitor'
                                                         => 'background:#fee2e2;color:#b91c1c;',
-                                                   // ASA
+                                                    // ASA
                                                     $item->bentuk_kerjasama === 'ASA'
                                                         => 'background:#e0f2fe;color:#0369a1;',
                                                     // default
@@ -118,7 +134,13 @@
                                 <a href="{{ route('admin.states.edit', $state) }}"
                                     class="text-blue-600 hover:text-blue-800 transition" title="Edit">
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">edit-pencil</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14.363 5.652l1.48-1.48a2 2 0 0 1 2.829 0l1.414 1.414a2 2 0 0 1 0 2.828l-1.48 1.48m-4.243-4.242l-9.616 9.615a2 2 0 0 0-.578 1.238l-.242 2.74a1 1 0 0 0 1.084 1.085l2.74-.242a2 2 0 0 0 1.24-.578l9.615-9.616m-4.243-4.242l4.243 4.242"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                        viewBox="0 0 24 24">
+                                        <title xmlns="">edit-pencil</title>
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="1.5"
+                                            d="m14.363 5.652l1.48-1.48a2 2 0 0 1 2.829 0l1.414 1.414a2 2 0 0 1 0 2.828l-1.48 1.48m-4.243-4.242l-9.616 9.615a2 2 0 0 0-.578 1.238l-.242 2.74a1 1 0 0 0 1.084 1.085l2.74-.242a2 2 0 0 0 1.24-.578l9.615-9.616m-4.243-4.242l4.243 4.242" />
+                                    </svg>
 
                                 </a>
 
@@ -131,7 +153,13 @@
                                     <button type="submit" class="text-red-600 hover:text-red-800 transition"
                                         title="Hapus">
 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">trash</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m20 9l-1.995 11.346A2 2 0 0 1 16.035 22h-8.07a2 2 0 0 1-1.97-1.654L4 9m17-3h-5.625M3 6h5.625m0 0V4a2 2 0 0 1 2-2h2.75a2 2 0 0 1 2 2v2m-6.75 0h6.75"/></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                            viewBox="0 0 24 24">
+                                            <title xmlns="">trash</title>
+                                            <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="1.5"
+                                                d="m20 9l-1.995 11.346A2 2 0 0 1 16.035 22h-8.07a2 2 0 0 1-1.97-1.654L4 9m17-3h-5.625M3 6h5.625m0 0V4a2 2 0 0 1 2-2h2.75a2 2 0 0 1 2 2v2m-6.75 0h6.75" />
+                                        </svg>
 
                                     </button>
                                 </form>
@@ -166,4 +194,19 @@
 
 
     </div>
+
+    <script>
+    let timeout = null;
+
+    const input = document.getElementById('searchInput');
+    const form = document.getElementById('searchForm');
+
+    input.addEventListener('keyup', function () {
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+            form.submit();
+        }, 400); // delay biar ga spam request
+    });
+</script>
 @endsection

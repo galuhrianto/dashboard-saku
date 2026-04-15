@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('content')
-    <section class="space-y-6">
+    <section class="space-y-6 text-(--foreground)">
 
         <!-- HEADER -->
         <div class="flex justify-between items-center">

@@ -33,9 +33,7 @@ Route::middleware('auth')->group(function () {
         return view('astacita');
     })->name('astacita');
 
-    Route::get('/ICAOheadoffice', function () {
-        return view('icaoheadoffice');
-    })->name('icaoheadoffice');
+    Route::get('/ICAOheadoffice', [HeadOfficeController::class, 'show'])->name('icaoheadoffice');
 
     Route::get('/states/{id}/directors', [DirekturController::class, 'show'])->name('direkturs.show');
 });
@@ -53,28 +51,34 @@ Route::prefix('admin')
 
         Route::resource('head_offices', HeadOfficeController::class);
 
-     Route::get('/states/{state}', [AdminStateController::class, 'show'])->name('admin.states.show');
-    
-    Route::get('/states/{state}/edit', [AdminStateController::class, 'edit'])->name('admin.states.edit');
-    Route::put('/states/{state}', [AdminStateController::class, 'update'])->name('admin.states.update');
-    Route::delete('/states/{state}', [AdminStateController::class, 'destroy'])->name('admin.states.destroy');
+        Route::get('/states/create', [AdminStateController::class, 'create'])
+            ->name('states.create');
 
-    Route::post('/states/{state}/direktur', [AdminDirekturController::class, 'store'])
-        ->name('admin.states.direktur.store');
+        Route::post('/states', [AdminStateController::class, 'store'])
+            ->name('states.store');
 
-    Route::delete('/direktur/{direktur}', [AdminDirekturController::class, 'destroy'])
-        ->name('admin.direktur.destroy');
+        Route::get('/states/{state}', [AdminStateController::class, 'show'])->name('states.show');
+
+        Route::get('/states/{state}/edit', [AdminStateController::class, 'edit'])->name('states.edit');
+        Route::put('/states/{state}', [AdminStateController::class, 'update'])->name('states.update');
+        Route::delete('/states/{state}', [AdminStateController::class, 'destroy'])->name('states.destroy');
+
+        Route::post('/states/{state}/direktur', [AdminDirekturController::class, 'store'])
+            ->name('states.direktur.store');
+
+        Route::delete('/direktur/{direktur}', [AdminDirekturController::class, 'destroy'])
+            ->name('direktur.destroy');
 
         Route::post('/states/{state}/kerjasamas', [KerjasamaController::class, 'storeFromState'])
-    ->name('admin.states.kerjasamas.store');
+            ->name('states.kerjasamas.store');
 
 
-    Route::get('/kerjasama', [KerjasamaController::class, 'index'])->name('admin.kerjasama.index');
-    Route::get('/kerjasama/create', [KerjasamaController::class, 'create'])->name('admin.kerjasama.create');
-    Route::post('/kerjasama', [KerjasamaController::class, 'store'])->name('admin.kerjasama.store');
-    Route::get('/kerjasama/{kerjasama}/edit', [KerjasamaController::class, 'edit'])->name('admin.kerjasama.edit');
-    Route::put('/kerjasama/{kerjasama}', [KerjasamaController::class, 'update'])->name('admin.kerjasama.update');
-    Route::delete('/kerjasama/{kerjasama}', [KerjasamaController::class, 'destroy'])->name('admin.kerjasama.destroy');
+        Route::get('/kerjasama', [KerjasamaController::class, 'index'])->name('kerjasama.index');
+        Route::get('/kerjasama/create', [KerjasamaController::class, 'create'])->name('kerjasama.create');
+        Route::post('/kerjasama', [KerjasamaController::class, 'store'])->name('kerjasama.store');
+        Route::get('/kerjasama/{kerjasama}/edit', [KerjasamaController::class, 'edit'])->name('kerjasama.edit');
+        Route::put('/kerjasama/{kerjasama}', [KerjasamaController::class, 'update'])->name('kerjasama.update');
+        Route::delete('/kerjasama/{kerjasama}', [KerjasamaController::class, 'destroy'])->name('kerjasama.destroy');
 
         Route::get('/media', [MediaController::class, 'index'])->name('media.index');
 

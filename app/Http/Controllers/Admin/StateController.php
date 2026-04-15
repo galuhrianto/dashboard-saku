@@ -15,6 +15,23 @@ class StateController extends Controller
         return view('admin.states.show', compact('state'));
     }
 
+        public function create()
+    {
+        return view('admin.states.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'state_name' => 'required',
+        ]);
+
+        State::create($validated);
+
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'State berhasil ditambahkan');
+    }
+
     public function edit(State $state)
     {
         return view('admin.states.edit', compact('state'));

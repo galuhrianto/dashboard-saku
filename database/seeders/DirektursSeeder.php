@@ -11,16 +11,10 @@ class DirektursSeeder extends Seeder
     {
         DB::table('direkturs')->insert([
             [
-                'nama' => 'Dr. Ahmad Rizki',
-                'jabatan' => 'Director Aviation',
-                'state_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'nama' => 'Mr. Kenji Tanaka',
-                'jabatan' => 'Senior Aviation Director',
-                'state_id' => 2,
+                'nama' => 'Mr. Takoyaki Isi Gurita',
+                'jabatan' => 'Director General',
+                'state_id' => 159,
+                'photo' => 'direktur/QFWqtSlAPSilpKh21aedT39m9JM9HTea13XwrhZZ.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

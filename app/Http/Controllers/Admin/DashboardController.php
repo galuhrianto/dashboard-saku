@@ -3,24 +3,31 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\State;
 use App\Models\Kerjasama;
 
 class DashboardController extends Controller
 {
-    public function index()
-    {
-        $totalStates = State::count();
+    public function index(Request $request)
+{
+    $totalStates = State::count();
+    $totalKerjasamas = Kerjasama::count(); 
 
-        $states = State::with('kerjasamas')->latest()->paginate(10);
-        $kerjasamas = Kerjasama::with('state')->latest()->paginate(10);
+    $query = State::with('kerjasamas');
 
-        return view('admin.dashboard', compact(
-            'totalStates',
-            'states',
-            'kerjasamas'
-        ));
+    if ($request->search) {
+        $query->where('state_name', 'like', $request->search . '%');
     }
+
+    $states = $query->latest()->paginate(10)->withQueryString();
+
+    return view('admin.dashboard', compact(
+        'totalStates',
+        'totalKerjasamas', 
+        'states'
+    ));
+}
 
     
 }

@@ -17,7 +17,7 @@
                     </div>
                     <a href="{{ asset('storage/' . $aidememoire->file_path) }}" target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center rounded-lg border border-(--border) bg-blue-500 px-3 py-2 text-sm font-semibold text-black transition hover:border-(--primary) dark:text-white">
+                        class="inline-flex items-center rounded-lg border border-(--border) bg-blue-500 px-3 py-2 text-sm font-semibold text-white transition hover:border-(--primary) dark:text-white">
                         Aide Memoire
                     </a>
                 </div>

@@ -40,11 +40,7 @@
       Kerjasama
     </a> --}}
 
-        <a href="{{ route('admin.users.index') }}"
-            class="block px-3 py-2 rounded-lg text-(--muted-foreground)
-              hover:bg-(--secondary) hover:text-(--foreground) transition">
-            User Management
-        </a>
+        
 
         <a href="{{ route('admin.media.index') }}"
             class="block px-3 py-2 rounded-lg text-(--muted-foreground)
@@ -56,6 +52,12 @@
             class="block px-3 py-2 rounded-lg text-(--muted-foreground)
               hover:bg-(--secondary) hover:text-(--foreground) transition">
             Head Office
+        </a>
+
+        <a href="{{ route('admin.users.index') }}"
+            class="block px-3 py-2 rounded-lg text-(--muted-foreground)
+              hover:bg-(--secondary) hover:text-(--foreground) transition">
+            User Management
         </a>
 
 
