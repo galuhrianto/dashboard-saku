@@ -129,8 +129,9 @@
                 @csrf
 
                 {{-- TYPE KERJASAMA --}}
+                
                 <select name="type_kerjasama" class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm" required>
-                    <option value="">Type Kerja Sama</option>
+                    <option value="">*Type Kerja Sama</option>
                     <option value="Kerja Sama Angkutan Udara">Angkutan Udara</option>
                     <option value="Kerja Sama Kelaikudaraan">Kelaikudaraan</option>
                     <option value="Kerja Sama Kebandarudaraan">Kebandarudaraan</option>
@@ -142,7 +143,7 @@
                 <input type="text" name="mou" placeholder="MoU"
                     class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm">
 
-                <input type="text" name="bentuk_kerjasama" placeholder="Bentuk"
+                <input type="text" name="bentuk_kerjasama" placeholder="*Bentuk Kerja Sama"
                     class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm" required>
 
                 <input type="text" name="deskripsi" placeholder="Deskripsi"
@@ -155,7 +156,7 @@
                     <option value="Penerima Potensial">Penerima Potensial</option>
                 </select>
                 <select name="status" class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm" required>
-                    <option value="">Status Berlaku</option>
+                    <option value="">*Status Berlaku</option>
                     <option value="Berlaku">Berlaku</option>
                     <option value="Tidak Berlaku">Tidak Berlaku</option>
                 </select>
