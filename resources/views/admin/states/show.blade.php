@@ -108,12 +108,17 @@
                     </label>
 
                     <!-- BUTTON -->
-                    <button class="bg-(--primary) text-white px-4 py-2 rounded text-sm">
-                        Simpan
-                    </button>
+                    <div class="flex items-center gap-2 mt-3">
+
+                        <!-- SIMPAN -->
+                        <button class="bg-(--primary) text-white px-4 py-2 rounded text-sm hover:brightness-105 transition">
+                            Simpan
+                        </button>
+
+                    </div>
+
 
                 </form>
-
             </div>
         </div>
 
@@ -129,7 +134,7 @@
                 @csrf
 
                 {{-- TYPE KERJASAMA --}}
-                
+
                 <select name="type_kerjasama" class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm" required>
                     <option value="">*Type Kerja Sama</option>
                     <option value="Kerja Sama Angkutan Udara">Angkutan Udara</option>
@@ -168,75 +173,75 @@
 
             <!-- LIST -->
             @php
-    $grouped = $state->kerjasamas->groupBy('type_kerjasama');
-@endphp
+                $grouped = $state->kerjasamas->groupBy('type_kerjasama');
+            @endphp
 
-@forelse ($grouped as $type => $items)
+            @forelse ($grouped as $type => $items)
+                {{-- 🔹 TYPE TITLE --}}
+                <div class="mt-4">
+                    <p class="mb-2 text-xs font-bold tracking-wider text-(--muted-foreground)">
+                        {{ $type }}
+                    </p>
 
-    {{-- 🔹 TYPE TITLE --}}
-    <div class="mt-4">
-        <p class="mb-2 text-xs font-bold tracking-wider text-(--muted-foreground)">
-                                            {{ $type }}
+                    <ul class="space-y-3">
+
+                        @foreach ($items as $item)
+                            <li
+                                class="rounded-lg border border-(--border) p-3 hover:bg-(--accent) transition flex justify-between items-start gap-3">
+
+                                <!-- CONTENT -->
+                                <div>
+                                    <p class="text-sm font-semibold text-(--foreground)">
+                                        {{ $item->bentuk_kerjasama }}
+
+                                        {{-- STATUS PENERIMAAN --}}
+                                        @if ($item->status_penerimaan)
+                                            ({{ $item->status_penerimaan }})
+                                        @endif
+
+                                        {{-- STATUS BERLAKU --}}
+                                        @if ($item->status === 'Tidak Berlaku')
+                                            <span class="ml-1 text-[10px] text-red-500">
+                                                (tidak berlaku)
+                                            </span>
+                                        @endif
+                                    </p>
+
+                                    @if ($item->deskripsi)
+                                        <p class="mt-1 text-xs text-(--muted-foreground)">
+                                            {{ $item->deskripsi }}
                                         </p>
+                                    @endif
+                                </div>
 
-        <ul class="space-y-3">
+                                <!-- ACTION -->
+                                <form action="{{ route('admin.kerjasama.destroy', $item) }}" method="POST"
+                                    onsubmit="return confirm('Hapus data ini?')">
+                                    @csrf
+                                    @method('DELETE')
 
-            @foreach ($items as $item)
-                <li
-                    class="rounded-lg border border-(--border) p-3 hover:bg-(--accent) transition flex justify-between items-start gap-3">
+                                    <button class="text-red-500 hover:text-red-700 text-xs">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                            viewBox="0 0 24 24">
+                                            <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="1.5"
+                                                d="m20 9l-1.995 11.346A2 2 0 0 1 16.035 22h-8.07a2 2 0 0 1-1.97-1.654L4 9m17-3h-5.625M3 6h5.625m0 0V4a2 2 0 0 1 2-2h2.75a2 2 0 0 1 2 2v2m-6.75 0h6.75" />
+                                        </svg>
+                                    </button>
+                                </form>
 
-                    <!-- CONTENT -->
-                    <div>
-                        <p class="text-sm font-semibold text-(--foreground)">
-                            {{ $item->bentuk_kerjasama }}
+                            </li>
+                        @endforeach
 
-                            {{-- STATUS PENERIMAAN --}}
-                            @if ($item->status_penerimaan)
-                                ({{ $item->status_penerimaan }})
-                            @endif
+                    </ul>
+                </div>
 
-                            {{-- STATUS BERLAKU --}}
-                            @if ($item->status === 'Tidak Berlaku')
-                                <span class="ml-1 text-[10px] text-red-500">
-                                    (tidak berlaku)
-                                </span>
-                            @endif
-                        </p>
-
-                        @if ($item->deskripsi)
-                            <p class="mt-1 text-xs text-(--muted-foreground)">
-                                {{ $item->deskripsi }}
-                            </p>
-                        @endif
-                    </div>
-
-                    <!-- ACTION -->
-                    <form action="{{ route('admin.kerjasama.destroy', $item) }}" method="POST"
-                        onsubmit="return confirm('Hapus data ini?')">
-                        @csrf
-                        @method('DELETE')
-
-                        <button class="text-red-500 hover:text-red-700 text-xs">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                                <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="1.5"
-                                    d="m20 9l-1.995 11.346A2 2 0 0 1 16.035 22h-8.07a2 2 0 0 1-1.97-1.654L4 9m17-3h-5.625M3 6h5.625m0 0V4a2 2 0 0 1 2-2h2.75a2 2 0 0 1 2 2v2m-6.75 0h6.75" />
-                            </svg>
-                        </button>
-                    </form>
-
-                </li>
-            @endforeach
-
-        </ul>
-    </div>
-
-@empty
-    <div
-        class="rounded-lg border border-dashed border-(--border) px-3 py-2.5 text-center text-xs text-(--muted-foreground)">
-        Belum ada data
-    </div>
-@endforelse
+            @empty
+                <div
+                    class="rounded-lg border border-dashed border-(--border) px-3 py-2.5 text-center text-xs text-(--muted-foreground)">
+                    Belum ada data
+                </div>
+            @endforelse
 
         </div>
 

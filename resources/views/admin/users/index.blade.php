@@ -16,21 +16,34 @@
                 </div>
             </div>
 
-            <form method="POST" action="{{ route('admin.users.store') }}" class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <form method="POST" action="{{ route('admin.users.store') }}" class="mt-5 space-y-3">
                 @csrf
 
-                <input name="name" placeholder="Nama"
-                    class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35"
-                    required />
+                <!-- GRID INPUT -->
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
 
-                <input name="username" placeholder="Username"
-                    class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35"
-                    required />
+                    <input name="name" placeholder="Nama"
+                        class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35"
+                        required />
 
-                <button
-                    class="inline-flex h-10.5 items-center justify-center rounded-(--radius) bg-(--primary) px-4 text-sm font-semibold text-(--primary-foreground) transition hover:brightness-105">
-                    Tambah User
-                </button>
+                    <input name="username" placeholder="Username"
+                        class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35"
+                        required />
+
+                    <input name="phone" placeholder="Nomor WhatsApp"
+                        class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35"
+                        required />
+
+                </div>
+
+                <!-- BUTTON -->
+                <div class="flex justify-end">
+                    <button
+                        class="inline-flex h-10.5 items-center justify-center rounded-(--radius) bg-(--primary) px-5 text-sm font-semibold text-(--primary-foreground) transition hover:brightness-105">
+                        Tambah User
+                    </button>
+                </div>
+
             </form>
         </div>
 
@@ -51,7 +64,7 @@
                             <tr class="border-t border-(--border)/80 transition hover:bg-(--accent)/60">
                                 <td class="px-4 py-3 font-medium">{{ $user->name }}</td>
                                 <td class="px-4 py-3 text-(--muted-foreground)">{{ $user->username }}</td>
-                                <td   class="px-4 py-3 text-(--muted-foreground)">{{$user->phone}}</td>
+                                <td class="px-4 py-3 text-(--muted-foreground)">{{ $user->phone }}</td>
 
                                 {{-- Kolom Role --}}
                                 <td class="px-4 py-3">
