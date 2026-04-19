@@ -9,6 +9,8 @@ class Direktur extends Model
     protected $fillable = [
         'nama',
         'jabatan',
+        'masa_jabatan',
+        'kontak',
         'state_id',
         'photo',
     ];

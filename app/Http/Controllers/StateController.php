@@ -15,15 +15,26 @@ class StateController extends Controller
             'kerjasamas'
         ]);
 
-        // 🔍 SEARCH (negara + direktur)
         if ($request->search) {
-            $search = $request->search;
+            $terms = explode(' ', strtolower($request->search));
 
-            $query->where(function ($q) use ($search) {
-                $q->where('state_name', 'like', $search.'%')
-                    ->orWhereHas('direktur', function ($q2) use ($search) {
-                        $q2->where('nama', 'like', $search.'%');
+            $query->where(function ($q) use ($terms) {
+
+                foreach ($terms as $term) {
+
+                    $q->where(function ($sub) use ($term) {
+
+                        $sub->whereRaw('LOWER(state_name) LIKE ?', [$term . '%']) // awal kalimat
+                            ->orWhereRaw('LOWER(state_name) LIKE ?', ['% ' . $term . '%']) // awal kata
+                            ->orWhereHas('direktur', function ($q2) use ($term) {
+                                $q2->whereRaw('LOWER(nama) LIKE ?', [$term . '%'])
+                                ->orWhereRaw('LOWER(nama) LIKE ?', ['% ' . $term . '%']);
+                            });
+
                     });
+
+                }
+
             });
         }
 
@@ -37,27 +48,47 @@ class StateController extends Controller
             $query->where('icao_region', $request->region);
         }
 
-        if ($request->kemitraan) {
+        $filters = $request->kemitraan ?? [];
 
-    // 👉 Belum ada kerjasama
-    if ($request->kemitraan === 'none') {
-        $query->whereDoesntHave('kerjasamas');
-    } 
-    else {
+        if (!empty($filters)) {
 
-        [$bentuk, $status] = explode('|', $request->kemitraan);
-
-        $query->whereHas('kerjasamas', function ($q) use ($bentuk, $status) {
-            $q->where('bentuk_kerjasama', $bentuk);
-
-            if ($status !== 'null') {
-                $q->where('status', $status);
+            // kalau ada "none" + lainnya → skip none
+            if (in_array('none', $filters) && count($filters) > 1) {
+                $filters = array_filter($filters, fn($f) => $f !== 'none');
             }
-        });
-    }
+
+            foreach ($filters as $filter) {
+
+                if ($filter === 'none') {
+                    $query->whereDoesntHave('kerjasamas');
+                    continue;
+                }
+
+                [$bentuk, $status] = explode('|', $filter);
+
+                $query->whereHas('kerjasamas', function ($q) use ($bentuk, $status) {
+
+                    $q->where('bentuk_kerjasama', $bentuk);
+
+                    if ($status !== 'null') {
+                        $q->where('status_penerimaan', $status);
+                    }
+
+                });
+            }
+        }
+
+
+        if ($request->sort === 'kerjasama') {
+
+    $query->withCount('kerjasamas')
+          ->orderByDesc('kerjasamas_count');
+
+} else {
+
+    $query->orderBy('state_name');
+
 }
-
-
 
         $states = $query
             ->orderBy('state_name')
@@ -67,18 +98,17 @@ class StateController extends Controller
 
 
             $kemitraanList = \DB::table('kerjasamas')
-    ->select('bentuk_kerjasama', 'status')
+    ->select('bentuk_kerjasama', 'status_penerimaan')
     ->distinct()
     ->get()
     ->map(function ($item) {
         return [
-            'value' => $item->status
-    ? $item->bentuk_kerjasama . '|' . $item->status
-    : $item->bentuk_kerjasama . '|null',
-            'label' => $item->status
-    ? $item->bentuk_kerjasama . ' - ' . $item->status
-    : $item->bentuk_kerjasama,
-        ];
+    'value' => $item->bentuk_kerjasama . '|' . ($item->status_penerimaan ?? 'null'),
+
+    'label' => $item->status_penerimaan
+        ? $item->bentuk_kerjasama . ' (' . $item->status_penerimaan . ')'
+        : $item->bentuk_kerjasama,
+];
     });
 
         $aidememoire = Media::where('type', 'aidememoire')->first();

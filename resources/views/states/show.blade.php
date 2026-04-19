@@ -133,51 +133,50 @@
             <div class="p-6">
                 <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
                     <div
-    class="flex flex-col items-center justify-center rounded-xl border border-dashed border-(--border) bg-(--secondary)/30 p-5 text-center overflow-hidden">
+                        class="flex flex-col items-center justify-center rounded-xl border border-dashed border-(--border) bg-(--secondary)/30 p-5 text-center overflow-hidden">
 
-    @if ($state->direktur && $state->direktur->photo)
-        <img src="{{ asset('storage/' . $state->direktur->photo) }}"
-             class="w-full max-w-full object-cover rounded-lg">
-        
-    @else
-        <div
-            class="flex h-20 w-20 items-center justify-center rounded-full border border-(--border) bg-(--secondary) text-sm font-bold text-(--muted-foreground)">
-            FOTO
-        </div>
+                        @if ($state->direktur && $state->direktur->photo)
+                            <img src="{{ asset('storage/' . $state->direktur->photo) }}"
+                                class="w-full max-w-full object-cover rounded-lg">
+                        @else
+                            <div
+                                class="flex h-20 w-20 items-center justify-center rounded-full border border-(--border) bg-(--secondary) text-sm font-bold text-(--muted-foreground)">
+                                FOTO
+                            </div>
 
-        <p class="mt-3 text-xs font-medium text-(--muted-foreground)">
-            Foto belum tersedia
-        </p>
-    @endif
+                            <p class="mt-3 text-xs font-medium text-(--muted-foreground)">
+                                Foto belum tersedia
+                            </p>
+                        @endif
 
-</div>
+                    </div>
 
                     <div class="rounded-xl border border-(--border) bg-(--secondary)/20 p-4 md:col-span-2">
                         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
                             <div>
                                 <p class="text-[11px] font-bold tracking-wider text-(--muted-foreground) uppercase">Nama</p>
-                                <p class="mt-1 text-sm font-semibold">{{$state->direktur->nama ?? '-'}}</p>
+                                <p class="mt-1 text-sm font-semibold">{{ $state->direktur->nama ?? '-' }}</p>
                             </div>
                             <div>
                                 <p class="text-[11px] font-bold tracking-wider text-(--muted-foreground) uppercase">Jabatan
                                 </p>
-                                <p class="mt-1 text-sm font-semibold">{{$state->direktur->jabatan ?? '-'}}</p>
+                                <p class="mt-1 text-sm font-semibold">{{ $state->direktur->jabatan ?? '-' }}</p>
                             </div>
                             <div>
                                 <p class="text-[11px] font-bold tracking-wider text-(--muted-foreground) uppercase">Masa
                                     Jabatan</p>
-                                <p class="mt-1 text-sm font-semibold">-</p>
+                                <p class="mt-1 text-sm font-semibold">{{ $state->direktur->masa_jabatan ?? '-' }}</p>
                             </div>
                             <div>
                                 <p class="text-[11px] font-bold tracking-wider text-(--muted-foreground) uppercase">Kontak
                                     Resmi</p>
-                                <p class="mt-1 text-sm font-semibold">-</p>
+                                <p class="mt-1 text-sm font-semibold">{{ $state->direktur->kontak ?? '-' }}</p>
                             </div>
                         </div>
-                        <div
+                        {{-- <div
                             class="mt-4 rounded-lg border border-dashed border-(--border) px-3 py-2 text-xs text-(--muted-foreground)">
                             Data profil Director General belum semua diinput.
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -215,34 +214,53 @@
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <!-- Kerja Sama -->
                             <div>
-                                <h3 class="mb-3 text-xs font-bold tracking-wider text-(--muted-foreground) uppercase">
-                                    Kerja Sama
-                                </h3>
+                                {{-- <h3 class="mb-3 text-xs font-bold tracking-wider text-(--muted-foreground) uppercase">
+        Kerja Sama
+    </h3> --}}
 
-                                <ul class="space-y-3">
-                                    @forelse ($state->kerjasamas as $item)
-                                        <li class="rounded-lg border border-(--border) p-3 hover:bg-(--accent) transition">
+                                @php
+                                    $grouped = $state->kerjasamas->groupBy('type_kerjasama');
+                                @endphp
 
-                                            <p class="text-sm font-semibold text-(--foreground)">
-                                                {{ $item->bentuk_kerjasama }}
-                                                @if ($item->status)
-                                                    ({{ $item->status }})
-                                                @endif
-                                            </p>
+                                @forelse ($grouped as $type => $items)
+                                    {{-- 🔹 Judul type --}}
+                                    <div class="mb-4">
+                                        <p class="mb-2 text-xs font-bold tracking-wider text-(--muted-foreground)">
+                                            {{ $type }}
+                                        </p>
 
-                                            <p class="mt-1 text-xs text-(--muted-foreground)">
-                                                {{ $item->deskripsi }}
-                                            </p>
+                                        <ul class="space-y-3">
+                                            @foreach ($items as $item)
+                                                <li
+                                                    class="rounded-lg border border-(--border) p-3 hover:bg-(--accent) transition">
 
+                                                    <p class="text-sm font-semibold text-(--foreground)">
+                                                        {{ $item->bentuk_kerjasama }}
+                                                        @if ($item->status_penerimaan)
+                                                            ({{ $item->status_penerimaan }})
+                                                        @endif
+                                                        @if ($item->status === 'Tidak Berlaku')
+                                                            <span class="ml-1 text-[10px] text-red-500 font-medium">
+                                                                (Tidak Berlaku)
+                                                            </span>
+                                                        @endif
+                                                    </p>
 
-                                        </li>
-                                    @empty
-                                        <li
-                                            class="rounded-lg border border-dashed border-(--border) px-3 py-2.5 text-center text-xs text-(--muted-foreground)">
-                                            Belum ada data
-                                        </li>
-                                    @endforelse
-                                </ul>
+                                                    <p class="mt-1 text-xs text-(--muted-foreground)">
+                                                        {{ $item->deskripsi }}
+                                                    </p>
+
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+
+                                @empty
+                                    <div
+                                        class="rounded-lg border border-dashed border-(--border) px-3 py-2.5 text-center text-xs text-(--muted-foreground)">
+                                        Belum ada data
+                                    </div>
+                                @endforelse
                             </div>
 
                             <!-- Beasiswa -->

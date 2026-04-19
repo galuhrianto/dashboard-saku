@@ -15,6 +15,8 @@ class DirekturController extends Controller
     $request->validate([
         'nama' => 'required',
         'jabatan' => 'nullable',
+        'masa_jabatan' => 'nullable',
+        'kontak' => 'nullable',
         'photo' => 'nullable|image|max:2048',
     ]);
 
@@ -23,6 +25,8 @@ class DirekturController extends Controller
     $data = [
         'nama' => $request->nama,
         'jabatan' => $request->jabatan,
+        'masa_jabatan' => $request->masa_jabatan,
+        'kontak' => $request->kontak,
     ];
 
     // kalau upload foto baru

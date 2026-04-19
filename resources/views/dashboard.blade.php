@@ -15,8 +15,7 @@
                         Total Data:
                         <span class="font-semibold text-(--foreground)">{{ $states->total() }}</span>
                     </div>
-                    <a href="{{ asset('storage/' . $aidememoire->file_path) }}" target="_blank"
-                        rel="noopener noreferrer"
+                    <a href="{{ asset('storage/' . $aidememoire->file_path) }}" target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center rounded-lg border border-(--border) bg-blue-500 px-3 py-2 text-sm font-semibold text-white transition hover:border-(--primary) dark:text-white">
                         Aide Memoire
                     </a>
@@ -26,7 +25,7 @@
             <form id="filterForm" method="GET" action="{{ route('dashboard') }}"
                 class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 <input type="text" name="search" id="searchInput" value="{{ request('search') }}"
-                    placeholder="Cari berdasarkan nama negara..."
+                    placeholder="Cari berdasarkan nama negara/direktur..."
                     class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm transition outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--ring)/35" />
 
                 <select name="part" id="partFilter"
@@ -50,25 +49,20 @@
                     <option value="NACC" {{ request('region') == 'NACC' ? 'selected' : '' }}>NACC</option>
                 </select>
 
-                <select name="kemitraan" onchange="this.form.submit()" 
-    class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm">
+                <select id="kemitraanSelect"
+                    class="w-full rounded-(--radius) border border-(--input) bg-(--background) px-3.5 py-2.5 text-sm">
+                    <option value="">Pilih Kemitraan</option>
 
-    <option value="">Semua Kemitraan</option>
+                    @foreach ($kemitraanList as $item)
+                        <option value="{{ $item['value'] }}">
+                            {{ $item['label'] }}
+                        </option>
+                    @endforeach
 
-    @foreach ($kemitraanList as $item)
-        <option value="{{ $item['value'] }}"
-            {{ request('kemitraan') == $item['value'] ? 'selected' : '' }}>
+                    <option value="none">Belum Ada</option>
+                </select>
 
-            {{ $item['label'] }}
-
-        </option>
-    @endforeach
-
-    <option value="none" {{ request('kemitraan') == 'none' ? 'selected' : '' }}>
-        Belum Ada Kerjasama
-    </option>
-
-</select>
+                <div id="chipsContainer" class="flex flex-wrap gap-2 mt-3"></div>
 
 
                 {{-- <select name="kerjasama"
@@ -93,7 +87,19 @@
                 <table class="min-w-full text-left text-sm">
                     <thead class="bg-(--secondary) text-(--secondary-foreground)">
                         <tr>
-                            <th class="px-4 py-3 font-semibold">No</th>
+                            <th class="px-4 py-3 font-semibold">
+                                <a href="{{ request()->fullUrlWithQuery([
+                                    'sort' => request('sort') === 'kerjasama' ? null : 'kerjasama',
+                                ]) }}"
+                                    class="flex items-center gap-1">
+
+                                    No
+
+                                    @if (request('sort') === 'kerjasama')
+                                        <span class="text-xs">▲</span>
+                                    @endif
+                                </a>
+                            </th>
                             <th class="px-4 py-3 font-semibold">Negara</th>
                             <th class="px-4 py-3 font-semibold">Ibu Kota</th>
                             <th class="px-4 py-3 font-semibold">Region</th>
@@ -115,8 +121,27 @@
                             @endphp
                             <tr onclick="window.location='{{ route('states.show', $state->id) }}'"
                                 class="border-t border-(--border)/80 transition hover:bg-(--accent)/60">
+
+                                @php
+                                    $count = $state->kerjasamas->count();
+
+                                    $bg = '';
+                                    $text = '';
+
+                                    if ($count >= 3) {
+                                        $bg = 'bg-green-100';
+                                        $text = 'text-green-600';
+                                    } elseif ($count == 2) {
+                                        $bg = 'bg-blue-100';
+                                        $text = 'text-blue-600';
+                                    }
+                                @endphp
+
                                 <td class="px-4 py-3 text-(--muted-foreground)">
-                                    {{ ($states->firstItem() ?? 1) + $loop->index }}
+                                    <span
+                                        class="inline-flex items-center justify-center w-6 h-6 text-xs font-semibold rounded-md {{ $bg }} {{ $text }}">
+                                        {{ ($states->firstItem() ?? 1) + $loop->index }}
+                                    </span>
                                 </td>
                                 <td class="px-4 py-3 font-medium">{{ $state->state_name }}</td>
                                 <td class="px-4 py-3 text-(--muted-foreground)">{{ $state->capital_city }}</td>
@@ -133,40 +158,39 @@
                                 </td>
                                 <td class="px-4 py-3 space-y-1">
 
-    @php
-        $kerjasamas = $state->kerjasamas;
-    @endphp
+                                    @php
+                                        $kerjasamas = $state->kerjasamas;
+                                    @endphp
 
-    @if ($kerjasamas->isNotEmpty())
-        <div class="flex flex-wrap gap-1 text-xs font-semibold">
+                                    @if ($kerjasamas->isNotEmpty())
+                                        <div class="flex flex-wrap gap-1 text-xs font-semibold">
 
-            @foreach ($kerjasamas as $item)
+                                            @foreach ($kerjasamas as $item)
+                                                @php
+                                                    $style = match ($item->status_penerimaan) {
+                                                        'Sudah Menerima' => 'background:#d1fae5;color:#047857;',
+                                                        'Penerima Potensial' => 'background:#dbeafe;color:#1d4ed8;',
+                                                        'Prioritas Penerima Dewan ICAO'
+                                                            => 'background:#ede9fe;color:#6d28d9;',
+                                                        'Kompetitor' => 'background:#fee2e2;color:#b91c1c;',
+                                                        default => 'background:#f3f4f6;color:#6b7280;',
+                                                    };
+                                                @endphp
 
-                @php
-                    $style = match($item->status) {
-                        'Sudah Menerima' => 'background:#d1fae5;color:#047857;',
-                        'Penerima Potensial' => 'background:#dbeafe;color:#1d4ed8;',
-                        'Prioritas Penerima Dewan ICAO' => 'background:#ede9fe;color:#6d28d9;',
-                        'Kompetitor' => 'background:#fee2e2;color:#b91c1c;',
-                        default => 'background:#f3f4f6;color:#6b7280;',
-                    };
-                @endphp
+                                                <span class="px-2 py-0.5 rounded-full" style="{{ $style }}">
+                                                    {{ $item->bentuk_kerjasama }}
+                                                    @if ($item->status_penerimaan)
+                                                        ({{ $item->status_penerimaan }})
+                                                    @endif
+                                                </span>
+                                            @endforeach
 
-                <span class="px-2 py-0.5 rounded-full" style="{{ $style }}">
-                    {{ $item->bentuk_kerjasama }}
-                    @if ($item->status)
-                        ({{ $item->status }})
-                    @endif
-                </span>
+                                        </div>
+                                    @else
+                                        <span class="text-xs text-(--muted-foreground)">-</span>
+                                    @endif
 
-            @endforeach
-
-        </div>
-    @else
-        <span class="text-xs text-(--muted-foreground)">-</span>
-    @endif
-
-</td>
+                                </td>
                                 <td class="px-4 py-3">
                                     <a href="{{ route('states.show', $state->id) }}"
                                         class="inline-flex items-center rounded-(--radius) border border-(--border) bg-(--background) px-3 py-1.5 text-xs font-semibold transition hover:border-(--primary) hover:text-(--primary)">
@@ -203,19 +227,91 @@
 @section('scripts')
     <script>
         let timeout = null;
+        const form = document.getElementById('filterForm');
 
-        // Search auto submit dengan debounce.
-        document.getElementById('searchInput').addEventListener('keyup', function() {
+        // 🔍 SEARCH
+        document.getElementById('searchInput')?.addEventListener('keyup', function() {
             clearTimeout(timeout);
             timeout = setTimeout(() => {
-                document.getElementById('filterForm').submit();
+                submitForm();
             }, 500);
         });
 
+        // 🔽 FILTER SELECT
         ['partFilter', 'regionFilter', 'dctpFilter'].forEach((id) => {
-            document.getElementById(id).addEventListener('change', function() {
-                document.getElementById('filterForm').submit();
-            });
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('change', submitForm);
+            }
         });
+
+        // =======================
+        // 🔥 KEMITRAAN (CHIPS)
+        // =======================
+
+        const select = document.getElementById('kemitraanSelect');
+        const container = document.getElementById('chipsContainer');
+
+        let selected = @json(request('kemitraan', []));
+        if (!Array.isArray(selected)) {
+            selected = [selected];
+        }
+
+        renderChips();
+
+        select.addEventListener('change', function() {
+            const value = this.value;
+
+            if (!value) return;
+
+            if (!selected.includes(value)) {
+                selected.push(value);
+            }
+
+            this.value = '';
+            submitForm();
+        });
+
+        function renderChips() {
+            container.innerHTML = '';
+
+            selected.forEach((value, index) => {
+
+                const chip = document.createElement('div');
+                chip.className =
+                    "flex items-center gap-1 px-3 py-1.5 text-xs rounded-full bg-blue-500 text-white";
+
+                chip.innerHTML = `
+            ${getLabel(value)}
+            <button type="button" class="ml-1 text-white/70 hover:text-white">×</button>
+        `;
+
+                // hidden input
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'kemitraan[]';
+                input.value = value;
+
+                chip.appendChild(input);
+
+                chip.querySelector('button').addEventListener('click', function() {
+                    selected.splice(index, 1);
+                    submitForm();
+                });
+
+                container.appendChild(chip);
+            });
+        }
+
+        function getLabel(value) {
+            const option = [...select.options].find(o => o.value === value);
+            return option ? option.text : value;
+        }
+
+
+        function submitForm() {
+            renderChips();
+            form.submit();
+        }
     </script>
 @endsection

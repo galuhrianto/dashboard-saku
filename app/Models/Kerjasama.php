@@ -11,7 +11,10 @@ class Kerjasama extends Model
 {
     protected $fillable = [
         'state_id',
+        'type_kerjasama',
+        'mou',
         'bentuk_kerjasama',
+        'status_penerimaan',
         'status',
         'deskripsi'
     ];

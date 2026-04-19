@@ -29,8 +29,11 @@ class KerjasamaController extends Controller
     {
         $request->validate([
             'state_id' => 'required|exists:states,id',
+            'type_kerjasama' =>  'required',
+            'mou' => 'nullable',
             'bentuk_kerjasama' => 'required',
-            'status' => 'nullable',
+            'status' => 'requied',
+            'status_penerimaan' => 'nullable',
             'deskripsi' => 'nullable',
         ]);
 
@@ -44,12 +47,18 @@ class KerjasamaController extends Controller
 {
     $request->validate([
         'bentuk_kerjasama' => 'required',
-        'status' => 'nullable',
+        'type_kerjasama' => 'required',
+        'status_penerimaan' => 'nullable',
+        'mou' => 'nullable',
+        'status' => 'required',
         'deskripsi' => 'nullable',
     ]);
 
     $state->kerjasamas()->create([
         'bentuk_kerjasama' => $request->bentuk_kerjasama,
+        'type_kerjasama' => $request->type_kerjasama,
+        'status_penerimaan' => $request->status_penerimaan,
+        'mou' => $request->mou,
         'status' => $request->status,
         'deskripsi' => $request->deskripsi,
     ]);
@@ -69,8 +78,11 @@ class KerjasamaController extends Controller
     {
         $request->validate([
             'state_id' => 'required|exists:states,id',
+            'type_kerjasama' =>  'required',
+            'mou' => 'nullable',
             'bentuk_kerjasama' => 'required',
-            'status' => 'nullable',
+            'status' => 'requied',
+            'status_penerimaan' => 'nullable',
             'deskripsi' => 'nullable',
         ]);
 

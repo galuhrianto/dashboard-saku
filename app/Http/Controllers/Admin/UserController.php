@@ -7,6 +7,9 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -46,5 +49,49 @@ class UserController extends Controller
         User::findOrFail($id)->delete();
 
         return back();
+    }
+
+    public function passwordMode(Request $request, $user)
+    {
+        $request->validate([
+            'password_mode' => 'required|in:auto,off'
+        ]);
+
+        $user = User::findOrFail($user);
+
+        $user->update([
+            'password_mode' => $request->password_mode,
+        ]);
+
+        return back()->with('success', 'Mode password diperbarui');
+    }
+
+
+    public function resendReset(User $user)
+    {
+        $token = Str::random(60);
+
+        DB::table('password_reset_tokens')->updateOrInsert(
+            ['email' => $user->username],
+            [
+                'token' => bcrypt($token),
+                'created_at' => now(),
+            ]
+        );
+
+        $link = url('/reset-password/'.$token.'?username='.$user->username);
+
+        Http::withHeaders([
+            'Authorization' => env('FONNTE_TOKEN')
+        ])->post('https://api.fonnte.com/send', [
+            'target' => $user->phone,
+            'message' => "🔐 Reset Password\n\nKlik link berikut:\n\n$link\n\nMohon untuk tidak bagikan tautan ke siapa pun, tautan akan kadaluarsa dalam waktu 60 menit."
+        ]);
+
+        $user->update([
+            'password_initialized_at' => now()
+        ]);
+
+        return back()->with('success', 'Link berhasil dikirim ulang');
     }
 }

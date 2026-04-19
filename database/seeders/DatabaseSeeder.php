@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             InformasiUmumSeeder::class,
             DctpSeeder::class,
             MediaSeeder::class,
+            NambahKerjasamaSeeder::class,
+            HeadOfficeSeeder::class,
         ]);
     }
 }

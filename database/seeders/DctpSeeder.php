@@ -83,7 +83,7 @@ class DctpSeeder extends Seeder
     // ===============================
     // INSERT FUNCTION (ANTI DUPLICATE)
     // ===============================
-    private function insertDctp($stateId, $status)
+    private function insertDctp($stateId, $status_penerimaan)
     {
         $exists = DB::table('kerjasamas')
             ->where('state_id', $stateId)
@@ -93,8 +93,9 @@ class DctpSeeder extends Seeder
         if (!$exists) {
             DB::table('kerjasamas')->insert([
                 'state_id' => $stateId,
+                'type_kerjasama' => 'Kerja Sama Lainnya',
                 'bentuk_kerjasama' => 'DCTP',
-                'status' => $status,
+                'status_penerimaan' => $status_penerimaan,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

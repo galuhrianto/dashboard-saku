@@ -10,6 +10,11 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\StateController as AdminStateController;
 use App\Http\Controllers\Admin\DirekturController as AdminDirekturController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\HeadOfficeController;
 
 // ROOT → redirect ke login
@@ -90,3 +95,13 @@ Route::prefix('admin')
 
         Route::delete('/media/office/{office}', [MediaController::class, 'destroyOffice'])->name('media.office.destroy');
     });
+
+
+
+    Route::get('/reset-password/{token}', [AuthController::class, 'showResetForm']);
+
+    Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+
+    Route::put('/users/{user}/password-mode', [UserController::class, 'passwordMode'])->name('users.password_mode');
+
+    Route::post('/users/{user}/resend-reset', [UserController::class, 'resendReset'])->name('users.resend-reset');
