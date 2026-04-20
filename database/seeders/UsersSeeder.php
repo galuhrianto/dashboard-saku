@@ -17,8 +17,8 @@ class UsersSeeder extends Seeder
                 'username' => '1',
                 'password' => Hash::make('1'),
                 'role_id' => 1, // admin
-                'phone'   => '088809768583',
-                'password_mode' => 'off',
+                'phone'   => '081315194197',
+                'password_mode' => 'auto',
                 'password_initialized_at' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
