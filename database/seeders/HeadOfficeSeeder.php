@@ -139,4 +139,25 @@ private function insert($name, $position, $parentId = null)
     $filename = implode('', $words) . '.jpg';
     return $this->copyPhotoToStorage($filename);
 }
+
+private function copyPhotoToStorage($filename)
+{
+    $source = database_path('seeders/photos/' . $filename);
+    $destination = 'photos/head_offices/' . $filename;
+
+    if (!File::exists($source)) {
+        return null;
+    }
+
+    // pastikan folder ada
+    Storage::disk('public')->makeDirectory('photos/head_offices');
+
+    // copy ke storage/app/public
+    Storage::disk('public')->put(
+        $destination,
+        File::get($source)
+    );
+
+    return $destination;
+}
 }
