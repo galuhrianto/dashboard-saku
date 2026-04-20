@@ -38,5 +38,5 @@ foreach ($users as $user) {
 }
 
 })
-->dailyAt('08:30')
+->dailyAt('09:00')
 ->when(fn () => now()->day % 2 === 0);
