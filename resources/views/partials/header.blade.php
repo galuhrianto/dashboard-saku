@@ -30,17 +30,34 @@
             </button>
 
             @auth
-                @if (auth()->user()->role_id == 1)
+                {{-- @if (auth()->user()->role_id == 1)
                     <div class="relative hidden sm:block">
+                        <span> Hi,</span>
                         <button type="button" onclick="window.location='{{ route('admin.dashboard') }}'"
                             id="userMenuButton"
                             class="inline-flex h-8 items-center rounded-(--radius) border border-(--border) bg-(--secondary) px-3 py-1.5 text-sm font-medium text-(--foreground) transition hover:border-(--primary)">
                             {{ auth()->user()->name }}
                         </button>
-
-
                     </div>
-                @endif
+                @endif --}}
+
+                <div class="relative hidden sm:block">
+                    <span> Hi,</span>
+
+                    @if (auth()->user()->role_id == 1)
+                        {{-- Jika Admin: Bisa diklik --}}
+                        <button type="button" onclick="window.location='{{ route('admin.dashboard') }}'"
+                            class="inline-flex h-8 items-center rounded-(--radius) border border-(--border) bg-(--secondary) px-3 py-1.5 text-sm font-medium text-(--foreground) transition hover:border-(--primary) cursor-pointer">
+                            {{ auth()->user()->name }}
+                        </button>
+                    @else
+                        {{-- Selain Admin: Tampilan sama tapi tidak bisa dipencet --}}
+                        <div
+                            class="inline-flex h-8 items-center rounded-(--radius) border border-(--border) px-3 py-1.5 text-sm text-(--foreground) cursor-default">
+                            {{ auth()->user()->name }}
+                        </div>
+                    @endif
+                </div>
 
                 <button id="themeToggle" type="button"
                     class="inline-flex h-8 w-8 items-center justify-center rounded-(--radius) border border-(--border) bg-(--secondary) text-(--secondary-foreground) transition hover:border-(--primary) hover:text-(--primary)">
@@ -93,12 +110,21 @@
             @auth
                 <div class="mt-3 border-t border-(--border) pt-3">
 
-                    @if (auth()->user()->role_id == 1)
-                        <a href="{{ route('admin.dashboard') }}"
-       class="block mt-2 rounded-lg px-3 py-2 text-sm text-(--foreground) hover:bg-(--accent) transition">
-        Admin Dashboard
-    </a>
-                    @endif
+                    <div class="space-y-1">
+                        @if (auth()->user()->role_id == 1)
+                            {{-- Jika Admin: Link Aktif --}}
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="block mt-2 rounded-lg px-3 py-2 text-sm text-(--foreground) hover:bg-(--accent) transition">
+                                Hi, <span class="text-(--foreground)">{{ auth()->user()->name }}</span>
+                            </a>
+                        @else
+                            {{-- Selain Admin: Hanya Label/Informasi Nama --}}
+                            <div
+                                class="block mt-2 px-3 py-2 text-sm text-(--muted-foreground)  border-(--border)">
+                                Hi, <span class="text-(--foreground)">{{ auth()->user()->name }}</span>
+                            </div>
+                        @endif
+                    </div>
 
                     <form method="POST" action="{{ route('logout') }}" class="mt-2">
                         @csrf

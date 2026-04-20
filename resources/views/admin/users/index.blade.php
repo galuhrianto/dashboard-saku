@@ -19,6 +19,27 @@
             <form method="POST" action="{{ route('admin.users.store') }}" class="mt-5 space-y-3">
                 @csrf
 
+                @error('username')
+    <div class="mt-1 flex items-center gap-2 text-xs text-red-600 bg-red-50 border border-red-200 rounded px-2 py-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" />
+        </svg>
+        <span>{{ $message }}</span>
+    </div>
+@enderror
+@if(session('success'))
+    <div id="successAlert"
+        class="mb-3 flex items-center gap-2 text-sm text-green-700 bg-green-50 border border-green-200 rounded px-3 py-2">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 13l4 4L19 7" />
+        </svg>
+
+        <span>{{ session('success') }}</span>
+    </div>
+@endif
                 <!-- GRID INPUT -->
                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
 

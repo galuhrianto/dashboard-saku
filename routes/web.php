@@ -71,8 +71,8 @@ Route::prefix('admin')
         Route::post('/states/{state}/direktur', [AdminDirekturController::class, 'store'])
             ->name('states.direktur.store');
 
-        Route::delete('/direktur/{direktur}', [AdminDirekturController::class, 'destroy'])
-            ->name('direktur.destroy');
+        Route::delete('/states/{state}/direktur', [AdminDirekturController::class, 'destroy'])
+            ->name('states.direktur.destroy');
 
         Route::post('/states/{state}/kerjasamas', [KerjasamaController::class, 'storeFromState'])
             ->name('states.kerjasamas.store');

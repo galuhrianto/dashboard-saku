@@ -114,10 +114,25 @@
                         <button class="bg-(--primary) text-white px-4 py-2 rounded text-sm hover:brightness-105 transition">
                             Simpan
                         </button>
-
+                        @if (isset($dir))
+                            <button type="button"
+                                onclick="if(confirm('Yakin ingin menghapus data direktur ini? Foto dan data akan hilang permanen.')) document.getElementById('form-delete-direktur').submit();"
+                                class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50 transition-colors"
+                                title="Hapus Direktur">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                            viewBox="0 0 24 24">
+                                            <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="1.5"
+                                                d="m20 9l-1.995 11.346A2 2 0 0 1 16.035 22h-8.07a2 2 0 0 1-1.97-1.654L4 9m17-3h-5.625M3 6h5.625m0 0V4a2 2 0 0 1 2-2h2.75a2 2 0 0 1 2 2v2m-6.75 0h6.75" />
+                                        </svg>
+                            </button>
+                        @endif
                     </div>
-
-
+                </form>
+                <form id="form-delete-direktur" action="{{ route('admin.states.direktur.destroy', $state) }}"
+                    method="POST" class="hidden">
+                    @csrf
+                    @method('DELETE')
                 </form>
             </div>
         </div>
@@ -130,45 +145,73 @@
 
             <!-- FORM TAMBAH -->
             <form action="{{ route('admin.states.kerjasamas.store', $state) }}" method="POST"
-                class="mb-4 flex flex-col md:flex-row gap-2">
+                class="mb-6 p-4 border border-(--input) rounded-xl">
                 @csrf
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                {{-- TYPE KERJASAMA --}}
+                    {{-- Baris 1 --}}
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold ml-1">Type Kerjasama <span class="text-red-500">*</span></label>
+                        <select name="type_kerjasama" class="w-full border border-(--input) rounded-lg px-3 py-2 text-sm"
+                            required>
+                            <option value="" disabled selected>Pilih Tipe</option>
+                            <option value="Kerja Sama Angkutan Udara">Angkutan Udara</option>
+                            <option value="Kerja Sama Kelaikudaraan">Kelaikudaraan</option>
+                            <option value="Kerja Sama Kebandarudaraan">Kebandarudaraan</option>
+                            <option value="Kerja Sama Keamanan Penerbangan">Keamanan</option>
+                            <option value="Kerja Sama Navigasi Penerbangan">Navigasi</option>
+                            <option value="Kerja Sama Lainnya">Lainnya</option>
+                        </select>
+                    </div>
 
-                <select name="type_kerjasama" class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm" required>
-                    <option value="">*Type Kerja Sama</option>
-                    <option value="Kerja Sama Angkutan Udara">Angkutan Udara</option>
-                    <option value="Kerja Sama Kelaikudaraan">Kelaikudaraan</option>
-                    <option value="Kerja Sama Kebandarudaraan">Kebandarudaraan</option>
-                    <option value="Kerja Sama Keamanan Penerbangan">Keamanan</option>
-                    <option value="Kerja Sama Navigasi Penerbangan">Navigasi</option>
-                    <option value="Kerja Sama Lainnya">Lainnya</option>
-                </select>
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold ml-1">MOU</label>
+                        <input type="text" name="mou" placeholder="Masukkan nomor MoU"
+                            class="w-full border border-(--input) rounded-lg px-3 py-2 text-sm">
+                    </div>
 
-                <input type="text" name="mou" placeholder="MoU"
-                    class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm">
+                    {{-- Baris 2 --}}
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold ml-1">Bentuk Kerjasama <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" name="bentuk_kerjasama" placeholder="Contoh: Technical Arrangement"
+                            class="w-full border border-(--input) rounded-lg px-3 py-2 text-sm" required>
+                    </div>
 
-                <input type="text" name="bentuk_kerjasama" placeholder="*Bentuk Kerja Sama"
-                    class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm" required>
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold ml-1">Deskripsi</label>
+                        <input type="text" name="deskripsi" placeholder="Keterangan singkat"
+                            class="w-full border border-(--input) rounded-lg px-3 py-2 text-sm">
+                    </div>
 
-                <input type="text" name="deskripsi" placeholder="Deskripsi"
-                    class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm">
+                    {{-- Baris 3 --}}
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold ml-1">Status Penerimaan</label>
+                        <select name="status_penerimaan"
+                            class="w-full border border-(--input) rounded-lg px-3 py-2 text-sm">
+                            <option value="" selected>Pilih Status</option>
+                            <option value="Sudah Menerima">Sudah Menerima</option>
+                            <option value="Penerima Potensial">Penerima Potensial</option>
+                        </select>
+                    </div>
 
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold ml-1">Status <span class="text-red-500">*</span></label>
+                        <select name="status" class="w-full border border-(--input) rounded-lg px-3 py-2 text-sm"
+                            required>
+                            <option value="" disabled selected>Pilih Masa Berlaku</option>
+                            <option value="Berlaku">Berlaku</option>
+                            <option value="Tidak Berlaku">Tidak Berlaku</option>
+                        </select>
+                    </div>
+                </div>
 
-                <select name="status_penerimaan" class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm">
-                    <option value="">Status Penerimaan</option>
-                    <option value="Sudah Menerima">Sudah Menerima</option>
-                    <option value="Penerima Potensial">Penerima Potensial</option>
-                </select>
-                <select name="status" class="flex-1 border border-(--input) rounded-lg px-3 py-2 text-sm" required>
-                    <option value="">*Status Berlaku</option>
-                    <option value="Berlaku">Berlaku</option>
-                    <option value="Tidak Berlaku">Tidak Berlaku</option>
-                </select>
-
-                <button class="bg-(--primary) text-white px-4 rounded-lg text-sm">
-                    Tambah
-                </button>
+                <div class="mt-4 flex justify-end">
+                    <button type="submit"
+                        class="bg-(--primary) text-white px-6 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition cursor-pointer">
+                        Simpan Data Kerja Sama
+                    </button>
+                </div>
             </form>
 
             <!-- LIST -->
@@ -187,7 +230,7 @@
 
                         @foreach ($items as $item)
                             <li
-                                class="rounded-lg border border-(--border) p-3 hover:bg-(--accent) transition flex justify-between items-start gap-3">
+                                class="rounded-lg border border-(--border) p-3  transition flex justify-between items-start gap-3">
 
                                 <!-- CONTENT -->
                                 <div>
@@ -220,7 +263,7 @@
                                     @csrf
                                     @method('DELETE')
 
-                                    <button class="text-red-500 hover:text-red-700 text-xs">
+                                    <button class="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50 transition-colors">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                             viewBox="0 0 24 24">
                                             <path fill="none" stroke="currentColor" stroke-linecap="round"

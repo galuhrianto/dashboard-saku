@@ -7,7 +7,7 @@
                 <div>
                     <h1 class="text-2xl font-semibold tracking-tight">Dashboard Negara ICAO</h1>
                     <p class="mt-1 text-sm text-(--muted-foreground)">Monitoring negara anggota, council part, dan status
-                        DCTP</p>
+                        Kemitraan</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <div

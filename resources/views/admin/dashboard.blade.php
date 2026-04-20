@@ -24,25 +24,20 @@
 
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
 
-    <!-- SEARCH -->
-    <form method="GET" id="searchForm" class="w-full md:w-auto">
-        <input
-            type="text"
-            name="search"
-            id="searchInput"
-            value="{{ request('search') }}"
-            placeholder="Cari negara..."
-            class="w-full md:w-80 rounded-lg border border-(--border) bg-(--secondary)/40 px-3 py-2 text-sm text-(--foreground) placeholder:text-(--muted-foreground) focus:outline-none focus:ring-2 focus:ring-(--ring)/30"
-        >
-    </form>
+        <!-- SEARCH -->
+        <form method="GET" id="searchForm" class="w-full md:w-auto">
+            <input type="text" name="search" id="searchInput" value="{{ request('search') }}"
+                placeholder="Cari negara..."
+                class="w-full md:w-80 rounded-lg border border-(--border) bg-(--secondary)/40 px-3 py-2 text-sm text-(--foreground) placeholder:text-(--muted-foreground) focus:outline-none focus:ring-2 focus:ring-(--ring)/30">
+        </form>
 
-    <!-- BUTTON TAMBAH -->
-    <a href="{{ route('admin.states.create') }}"
-       class="inline-flex items-center justify-center rounded-lg bg-(--primary) text-white px-4 py-2 text-sm hover:opacity-90 transition">
-        + Tambah Negara
-    </a>
+        <!-- BUTTON TAMBAH -->
+        <a href="{{ route('admin.states.create') }}"
+            class="inline-flex items-center justify-center rounded-lg bg-(--primary) text-white px-4 py-2 text-sm hover:opacity-90 transition">
+            + Tambah Negara
+        </a>
 
-</div>
+    </div>
     <div class="overflow-hidden rounded-2xl border border-(--border) bg-(--card) shadow-sm">
 
 
@@ -51,7 +46,19 @@
 
                 <thead class="bg-(--secondary) text-(--secondary-foreground)">
                     <tr>
-                        <th class="px-4 py-3 font-semibold">No</th>
+                        <th class="px-4 py-3 font-semibold">
+                            <a href="{{ request()->fullUrlWithQuery([
+                                'sort' => request('sort') === 'kerjasama' ? null : 'kerjasama',
+                            ]) }}"
+                                class="flex items-center gap-1">
+
+                                No
+
+                                @if (request('sort') === 'kerjasama')
+                                    <span class="text-xs">▲</span>
+                                @endif
+                            </a>
+                        </th>
                         <th class="px-4 py-3 font-semibold">Negara</th>
                         <th class="px-4 py-3 font-semibold">Region</th>
                         <th class="px-4 py-3 font-semibold">Status Kemitraan</th>
@@ -61,13 +68,31 @@
 
                 <tbody>
                     @forelse ($states as $state)
-                        <tr class="border-t border-(--border)/80 hover:bg-(--accent)/60"
+                        <tr class="border-t border-(--border)/80 hover:bg-(--accent)/60 cursor-pointer"
                             onclick="window.location='{{ route('admin.states.show', $state) }}'">
 
 
                             <!-- NO -->
+                            @php
+                                $count = $state->kerjasamas->count();
+
+                                $bg = '';
+                                $text = '';
+
+                                if ($count >= 3) {
+                                    $bg = 'bg-green-100';
+                                    $text = 'text-green-600';
+                                } elseif ($count == 2) {
+                                    $bg = 'bg-blue-100';
+                                    $text = 'text-blue-600';
+                                }
+                            @endphp
+
                             <td class="px-4 py-3 text-(--muted-foreground)">
-                                {{ ($states->firstItem() ?? 1) + $loop->index }}
+                                <span
+                                    class="inline-flex items-center justify-center w-6 h-6 text-xs font-semibold rounded-md {{ $bg }} {{ $text }}">
+                                    {{ ($states->firstItem() ?? 1) + $loop->index }}
+                                </span>
                             </td>
 
                             <!-- NEGARA -->
@@ -145,12 +170,13 @@
                                 </a>
 
                                 <!-- DELETE -->
-                                <form action="{{ route('admin.states.destroy', $state) }}" method="POST"
-                                    onsubmit="return confirm('Yakin hapus data?')">
+                                <form method="POST" action="{{ route('admin.states.destroy', $state) }}"
+                                    onsubmit="return confirm('Yakin ingin hapus?')">
                                     @csrf
                                     @method('DELETE')
 
-                                    <button type="submit" class="text-red-600 hover:text-red-800 transition"
+                                    <button type="submit" onclick="event.stopPropagation()"
+                                        class=" text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50 transition-colors"
                                         title="Hapus">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
@@ -196,17 +222,17 @@
     </div>
 
     <script>
-    let timeout = null;
+        let timeout = null;
 
-    const input = document.getElementById('searchInput');
-    const form = document.getElementById('searchForm');
+        const input = document.getElementById('searchInput');
+        const form = document.getElementById('searchForm');
 
-    input.addEventListener('keyup', function () {
-        clearTimeout(timeout);
+        input.addEventListener('keyup', function() {
+            clearTimeout(timeout);
 
-        timeout = setTimeout(() => {
-            form.submit();
-        }, 400); // delay biar ga spam request
-    });
-</script>
+            timeout = setTimeout(() => {
+                form.submit();
+            }, 400); // delay biar ga spam request
+        });
+    </script>
 @endsection

@@ -12,6 +12,7 @@ class User extends Authenticatable
         'username',
         'password',
         'phone',
+        'role_id',
         'password_mode',
         'password_initialized_at',
     ];

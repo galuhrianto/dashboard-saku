@@ -49,14 +49,18 @@ class DirekturController extends Controller
     return back()->with('success', 'Direktur berhasil disimpan');
 }
 
-    public function destroy(Direktur $direktur)
-    {
+    public function destroy(State $state)
+{
+    
+    $direktur = $state->direktur; 
+
+    if ($direktur) {
         if ($direktur->photo && \Storage::disk('public')->exists($direktur->photo)) {
             \Storage::disk('public')->delete($direktur->photo);
         }
-
         $direktur->delete();
-
-        return back()->with('success', 'Direktur berhasil dihapus');
     }
+
+    return back()->with('success', 'Direktur berhasil dihapus');
+}
 }

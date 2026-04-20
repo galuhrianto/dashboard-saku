@@ -23,6 +23,14 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required|unique:users,username',
+            'phone' => 'required',
+        ], [
+            'username.unique' => 'Username sudah digunakan',
+        ]);
+
         User::create([
             'name' => $request->name,
             'username' => $request->username,
@@ -31,11 +39,15 @@ class UserController extends Controller
             'role_id' => 2,
         ]);
 
-        return back();
+        return back()->with('success', 'User berhasil ditambahkan');
     }
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'role_id' => 'required|exists:roles,id',
+        ]);
+
         $user = User::findOrFail($id);
 
         $user->update([
