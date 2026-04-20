@@ -135,6 +135,7 @@ private function insert($name, $position, $parentId = null)
     $words = explode(' ', $clean);
     $words = array_slice($words, 0, 2);
 
-    return 'photos/head_offices/' . implode('', $words) . '.jpg';
+    $filename = implode('', $words) . '.jpg';
+    return $this->copyPhotoToStorage($filename);
 }
 }
