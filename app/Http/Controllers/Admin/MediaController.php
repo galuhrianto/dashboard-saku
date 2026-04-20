@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Media;
-use App\Models\IcaoOffice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,12 +13,12 @@ class MediaController extends Controller
     {
         $aidememoire = Media::where('type', 'aidememoire')->first();
         $astacita = Media::where('type', 'astacita')->first();
-        $offices = IcaoOffice::latest()->get();
+        
 
         return view('admin.media.index', compact(
             'aidememoire',
             'astacita',
-            'offices'
+        
         ));
     }
 
@@ -75,37 +74,5 @@ class MediaController extends Controller
     return back()->with('success', 'Asta Cita berhasil diupload');
 }
 
-    public function destroyOffice(IcaoOffice $office)
-    {
-        if ($office->photo && Storage::disk('public')->exists($office->photo)) {
-            Storage::disk('public')->delete($office->photo);
-        }
-
-        $office->delete();
-
-        return back()->with('success', 'Data berhasil dihapus');
-    }
-
-    public function storeOffice(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'position' => 'required',
-            'photo' => 'nullable|image|max:2048',
-        ]);
-
-        $path = null;
-
-        if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('media', 'public');
-        }
-
-        IcaoOffice::create([
-            'name' => $request->name,
-            'position' => $request->position,
-            'photo' => $path,
-        ]);
-
-        return back()->with('success', 'Data berhasil ditambahkan');
-    }
+    
 }
