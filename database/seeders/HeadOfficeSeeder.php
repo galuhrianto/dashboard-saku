@@ -12,6 +12,7 @@ class HeadOfficeSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('head_offices')->truncate();
         DB::transaction(function () {
 
     // LEVEL 1
