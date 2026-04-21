@@ -52,7 +52,7 @@
 
         <!-- ================= ASTA CITA ================= -->
 
-        <div class="rounded-2xl border border-(--border) bg-(--card) p-5 shadow-sm">
+        {{-- <div class="rounded-2xl border border-(--border) bg-(--card) p-5 shadow-sm">
             <h2 class="text-sm font-semibold text-(--foreground) mb-4">Asta Cita</h2>
 
 
@@ -71,8 +71,8 @@
                 class="mt-4 space-y-2">
                 @csrf
 
-                {{-- <input type="text" name="title" placeholder="Judul (optional)"
-    class="w-full rounded-lg border border-(--input) bg-(--background) px-3 py-2 text-sm"> --}}
+//                <input type="text" name="title" placeholder="Judul (optional)"
+  //  class="w-full rounded-lg border border-(--input) bg-(--background) px-3 py-2 text-sm">
 
                 <label
                     class="flex items-center gap-3 border border-(--input) rounded-xl px-4 py-3 cursor-pointer hover:border-(--primary) transition">
@@ -95,30 +95,36 @@
             </form>
 
 
-        </div>
+        </div> --}}
 
-        <!-- ================= ICAO OFFICE ================= -->
+        <!-- ================= STRATEGI PENCALONAN ================= -->
 
-        {{-- <div class="rounded-2xl border border-(--border) bg-(--card) p-5 shadow-sm md:col-span-2">
+        <div class="rounded-2xl border border-(--border) bg-(--card) p-5 shadow-sm">
+            <h2 class="text-sm font-semibold text-(--foreground) mb-4">Strategi Pencalonan</h2>
 
 
-            <h2 class="text-sm font-semibold text-(--foreground) mb-4">ICAO Head Office</h2>
+            @if ($strategipencalonan)
+                <p class="text-sm text-(--muted-foreground) mb-2">
+                    {{ $strategipencalonan->title ?? 'File tersedia' }}
+                </p>
 
-            <!-- FORM TAMBAH -->
-            <form action="{{ route('admin.media.office.store') }}" method="POST" enctype="multipart/form-data"
-                class="grid grid-cols-1 md:grid-cols-4 gap-3 mb-4">
+                <a href="{{ asset('storage/' . $strategipencalonan->file_path) }}" target="_blank"
+                    class="text-blue-600 text-sm hover:underline">
+                    Lihat File
+                </a>
+            @endif
+
+            <form action="{{ route('admin.media.upload.strategipencalonan') }}" method="POST" enctype="multipart/form-data"
+                class="mt-4 space-y-2">
                 @csrf
 
-                <input type="text" name="name" placeholder="Nama"
-                    class="rounded-lg border border-(--input) bg-(--background) px-3 py-2 text-sm" required>
-
-                <input type="text" name="position" placeholder="Jabatan"
-                    class="rounded-lg border border-(--input) bg-(--background) px-3 py-2 text-sm" required>
+                {{-- <input type="text" name="title" placeholder="Judul (optional)"
+    class="w-full rounded-lg border border-(--input) bg-(--background) px-3 py-2 text-sm"> --}}
 
                 <label
                     class="flex items-center gap-3 border border-(--input) rounded-xl px-4 py-3 cursor-pointer hover:border-(--primary) transition">
 
-                    <span id="photoName" class="text-sm text-(--muted-foreground) truncate">
+                    <span id="strategiName" class="text-sm text-(--muted-foreground) truncate">
                         Pilih file...
                     </span>
 
@@ -126,77 +132,17 @@
                         Browse
                     </span>
 
-                    <input type="file" name="photo" required class="hidden" accept=".jpg,.jpeg,.png"
-                        onchange="document.getElementById('photoName').innerText = this.files[0].name">
+                    <input type="file" name="file" required class="hidden" accept=".pdf,.doc,.docx"
+                        onchange="document.getElementById('strategiName').innerText = this.files[0].name">
                 </label>
 
                 <button class="bg-(--primary) text-white px-4 py-2 rounded-xl text-sm hover:opacity-90 transition">
-                    Tambah
+                    Upload / Replace
                 </button>
             </form>
 
-            <!-- TABLE -->
-            <div class="overflow-x-auto">
-                <table class="min-w-full text-sm">
 
-                    <thead class="bg-(--secondary) text-(--secondary-foreground)">
-                        <tr>
-                            <th class="px-4 py-2">Foto</th>
-                            <th class="px-4 py-2">Nama</th>
-                            <th class="px-4 py-2">Jabatan</th>
-                            <th class="px-4 py-2">Aksi</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @forelse ($offices as $office)
-                            <tr class="border-t border-(--border)/80 hover:bg-(--accent)/60">
-
-                                <td class="px-4 py-2">
-                                    @if ($office->photo)
-                                        <img src="{{ asset('storage/' . $office->photo) }}"
-                                            class="w-12 h-12 object-cover rounded">
-                                    @endif
-                                </td>
-
-                                <td class="px-4 py-2 text-(--foreground)">
-                                    {{ $office->name }}
-                                </td>
-
-                                <td class="px-4 py-2 text-(--muted-foreground)">
-                                    {{ $office->position }}
-                                </td>
-
-                                <td class="px-4 py-2">
-
-                                    <form action="{{ route('admin.media.office.destroy', $office) }}" method="POST"
-                                        onsubmit="return confirm('Yakin hapus?')">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button class="text-red-600 text-xs hover:underline">
-                                            Hapus
-                                        </button>
-                                    </form>
-
-                                </td>
-
-                            </tr>
-
-                        @empty
-                            <tr>
-                                <td colspan="4" class="text-center py-4 text-(--muted-foreground)">
-                                    Belum ada data
-                                </td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-
-                </table>
-            </div>
-
-
-        </div> --}}
+        </div>
 
     </div>
 @endsection

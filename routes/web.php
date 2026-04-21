@@ -91,9 +91,7 @@ Route::prefix('admin')
 
         Route::post('/media/astacita', [MediaController::class, 'uploadAstaCita'])->name('media.upload.astacita');
 
-        Route::post('/media/office', [MediaController::class, 'storeOffice'])->name('media.office.store');
-
-        Route::delete('/media/office/{office}', [MediaController::class, 'destroyOffice'])->name('media.office.destroy');
+        Route::post('/media/strategipencalonan', [MediaController::class, 'uploadStrategipencalonan'])->name('media.upload.strategipencalonan');
     });
 
 

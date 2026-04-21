@@ -15,10 +15,21 @@
                         Total Data:
                         <span class="font-semibold text-(--foreground)">{{ $states->total() }}</span>
                     </div>
-                    <a href="{{ asset('storage/' . $aidememoire->file_path) }}" target="_blank" rel="noopener noreferrer"
-                        class="inline-flex items-center rounded-lg border border-(--border) bg-blue-500 px-3 py-2 text-sm font-semibold text-white transition hover:border-(--primary) dark:text-white">
-                        Aide Memoire
-                    </a>
+                    @if ($strategipencalonan && $strategipencalonan->file_path)
+                        <a href="{{ asset('storage/' . $strategipencalonan->file_path) }}" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center rounded-lg border border-(--border) bg-green-600 px-3 py-2 text-sm font-semibold text-white transition hover:border-(--primary)">
+                            Strategi
+                        </a>
+                    @endif
+
+                    @if ($aidememoire && $aidememoire->file_path)
+                        <a href="{{ asset('storage/' . $aidememoire->file_path) }}" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center rounded-lg border border-(--border) bg-blue-500 px-3 py-2 text-sm font-semibold text-white transition hover:border-(--primary)">
+                            Aide Memoire
+                        </a>
+                    @endif
                 </div>
             </div>
 

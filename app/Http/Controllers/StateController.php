@@ -112,9 +112,10 @@ class StateController extends Controller
     });
 
         $aidememoire = Media::where('type', 'aidememoire')->first();
+        $strategipencalonan = Media::where('type', 'strategipencalonan')->first();
 
 
-        return view('dashboard', compact('states', 'kemitraanList', 'aidememoire'));
+        return view('dashboard', compact('states', 'kemitraanList', 'aidememoire', 'strategipencalonan'));
     }
 
     // 🔍 Detail Negara
