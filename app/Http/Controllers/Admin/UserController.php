@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Backupreceiver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -17,8 +18,9 @@ class UserController extends Controller
     {
         $users = User::with('role')->get();
         $roles = Role::all();
+        $receivers = BackupReceiver::latest()->get();
 
-        return view('admin.users.index', compact('users', 'roles'));
+        return view('admin.users.index', compact('users', 'roles', 'receivers'));
     }
 
     public function store(Request $request)
@@ -107,4 +109,39 @@ class UserController extends Controller
 
         return back()->with('success', 'Link berhasil dikirim ulang');
     }
+
+    public function toggleBackup(BackupReceiver $receiver)
+    {
+        $receiver->update([
+            'is_active' => !$receiver->is_active
+        ]);
+
+        return back()->with('success', 'Status berhasil diubah');
+    }
+
+    public function destroyBackup(BackupReceiver $receiver)
+    {
+        $receiver->delete();
+
+        return back()->with('success', 'Receiver berhasil dihapus');
+    }
+
+    public function updateBackupAccounts(Request $request, BackupReceiver $receiver)
+{
+    $accounts = json_decode($request->accounts, true);
+
+    if (!is_array($accounts)) {
+        $accounts = [];
+    }
+
+    $validUsers = \App\Models\User::whereIn('username', $accounts)
+        ->pluck('username')
+        ->toArray();
+
+    $receiver->update([
+        'accounts' => $validUsers
+    ]);
+
+    return back(); // ← INI YANG BENAR
+}
 }

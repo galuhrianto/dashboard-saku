@@ -20,26 +20,28 @@
                 @csrf
 
                 @error('username')
-    <div class="mt-1 flex items-center gap-2 text-xs text-red-600 bg-red-50 border border-red-200 rounded px-2 py-1">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M12 9v2m0 4h.01M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" />
-        </svg>
-        <span>{{ $message }}</span>
-    </div>
-@enderror
-@if(session('success'))
-    <div id="successAlert"
-        class="mb-3 flex items-center gap-2 text-sm text-green-700 bg-green-50 border border-green-200 rounded px-3 py-2">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7" />
-        </svg>
+                    <div
+                        class="mt-1 flex items-center gap-2 text-xs text-red-600 bg-red-50 border border-red-200 rounded px-2 py-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" />
+                        </svg>
+                        <span>{{ $message }}</span>
+                    </div>
+                @enderror
+                @if (session('success'))
+                    <div id="successAlert"
+                        class="mb-3 flex items-center gap-2 text-sm text-green-700 bg-green-50 border border-green-200 rounded px-3 py-2">
 
-        <span>{{ session('success') }}</span>
-    </div>
-@endif
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+
+                        <span>{{ session('success') }}</span>
+                    </div>
+                @endif
                 <!-- GRID INPUT -->
                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
 
@@ -163,6 +165,185 @@
                 </table>
             </div>
         </div>
-    </section>
 
+        <div class="rounded-2xl border border-(--border) bg-(--card) shadow-sm mt-6 overflow-visible">
+            <div class="overflow-visible">
+                <table class="min-w-full text-left text-sm">
+                    <thead class="bg-(--secondary) text-(--secondary-foreground)">
+                        <tr>
+                            <th class="px-4 py-3 font-semibold">Penerima</th>
+                            <th class="px-4 py-3 font-semibold">Akun</th>
+                            <th class="px-4 py-3 font-semibold">No WA</th>
+                            <th class="px-4 py-3 font-semibold">Status</th>
+                            <th class="px-4 py-3 font-semibold w-40 text-right">Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="overflow-visible">
+                        @forelse($receivers as $r)
+                            <tr class="border-t border-(--border)/80 transition hover:bg-(--accent)/60 overflow-visible">
+
+                                <td class="px-4 py-3 font-medium">
+                                    {{ $r->name ?? '-' }}
+                                </td>
+
+                                <td class="px-4 py-3 overflow-visible">
+                                    <form method="POST" action="{{ route('admin.backup.accounts', $r) }}"
+                                        data-id="{{ $r->id }}" class="backup-form">
+                                        @csrf
+                                        @method('PATCH')
+
+                                        <div id="chips-{{ $r->id }}" class="flex flex-wrap gap-1 mb-2">
+                                            @foreach ($r->accounts ?? [] as $acc)
+                                                <span
+                                                    class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] bg-(--secondary)"
+                                                    data-value="{{ $acc }}">
+                                                    {{ $acc }}
+                                                    <button type="button"
+                                                        onclick="removeChip(this, {{ $r->id }})">✕</button>
+                                                </span>
+                                            @endforeach
+                                        </div>
+
+                                        <input type="hidden" name="accounts">
+
+                                        <div class="relative">
+                                            <input type="text" placeholder="ketik username..."
+                                                class="text-xs border border-(--input) rounded px-2 py-1 w-40 focus:ring-1 focus:ring-blue-500 outline-none"
+                                                oninput="searchUser(this, {{ $r->id }})" autocomplete="off">
+
+                                            <div id="dropdown-{{ $r->id }}"
+                                                class="absolute left-0 top-full mt-1 z-50 bg-white border border-gray-200 rounded shadow-xl text-xs w-48 hidden max-h-48 overflow-y-auto">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
+
+                                <td class="px-4 py-3 text-(--muted-foreground)">
+                                    {{ $r->phone }}
+                                </td>
+
+                                <td class="px-4 py-3">
+                                    <form method="POST" action="{{ route('admin.backup.toggle', $r) }}">
+                                        @csrf
+                                        @method('PATCH')
+
+                                        <button
+                                            class="inline-flex items-center rounded-(--radius) px-2.5 py-1 text-xs font-medium transition
+                            {{ $r->is_active
+                                ? 'bg-green-100 text-green-700 hover:brightness-95'
+                                : 'bg-gray-200 text-gray-600 hover:bg-gray-300' }}">
+                                            {{ $r->is_active ? 'Aktif' : 'Nonaktif' }}
+                                        </button>
+                                    </form>
+                                </td>
+
+                                <td class="px-4 py-3 text-right">
+                                    <form method="POST" action="{{ route('admin.backup.destroy', $r) }}"
+                                        onsubmit="return confirm('Hapus receiver ini?')">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button
+                                            class="inline-flex items-center rounded-(--radius) bg-(--destructive) px-3 py-1.5 text-xs font-semibold text-white transition hover:brightness-110">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="px-4 py-10 text-center text-(--muted-foreground)">
+                                    Belum ada backup receiver
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+
+        <script>
+            const users = @json($users->pluck('username'));
+
+            function searchUser(input, id) {
+                const val = input.value.toLowerCase();
+                const dropdown = document.getElementById('dropdown-' + id);
+
+                dropdown.innerHTML = '';
+
+                if (!val) {
+                    dropdown.classList.add('hidden');
+                    return;
+                }
+
+                const results = users.filter(u => u.toLowerCase().includes(val));
+
+                if (!results.length) {
+                    dropdown.classList.add('hidden');
+                    return;
+                }
+
+                results.slice(0, 5).forEach(u => {
+                    const item = document.createElement('div');
+                    item.className = "px-2 py-1 hover:bg-gray-100 cursor-pointer";
+                    item.innerText = u;
+
+                    item.onclick = () => selectUser(u, id, input);
+
+                    dropdown.appendChild(item);
+                });
+
+                dropdown.classList.remove('hidden');
+            }
+
+            function selectUser(username, id, input) {
+                const box = document.getElementById('chips-' + id);
+                const form = document.querySelector(`form[data-id="${id}"]`);
+
+                if ([...box.children].some(c => c.dataset.value === username)) {
+                    input.value = '';
+                    return;
+                }
+
+                const chip = document.createElement('span');
+                chip.className = "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] bg-(--secondary)";
+                chip.dataset.value = username;
+
+                chip.innerHTML = `
+        ${username}
+        <button type="button" onclick="removeChip(this, ${id})">✕</button>
+    `;
+
+                box.appendChild(chip);
+
+                input.value = '';
+                document.getElementById('dropdown-' + id).classList.add('hidden');
+
+                submitAccounts(form, id);
+            }
+
+            function removeChip(btn, id) {
+                const form = document.querySelector(`form[data-id="${id}"]`);
+                btn.parentElement.remove();
+
+                submitAccounts(form, id);
+            }
+
+            function submitAccounts(form, id) {
+                const box = document.getElementById('chips-' + id);
+                const hidden = form.querySelector('input[name=accounts]');
+
+                const values = Array.from(box.querySelectorAll('[data-value]'))
+                    .map(el => el.dataset.value);
+
+                hidden.value = JSON.stringify(values);
+
+                form.submit();
+            }
+        </script>
+
+    </section>
 @endsection

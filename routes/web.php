@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\HeadOfficeController;
 
@@ -51,6 +50,10 @@ Route::prefix('admin')
         Route::post('/users', [UserController::class, 'store'])->name('users.store');
         Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+        Route::patch('/backup/{receiver}/accounts', [UserController::class, 'updateBackupAccounts'])->name('backup.accounts');
+        Route::patch('/backup/{receiver}', [UserController::class, 'toggleBackup'])->name('backup.toggle');
+        Route::delete('/backup/{receiver}', [UserController::class, 'destroyBackup'])->name('backup.destroy');
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
