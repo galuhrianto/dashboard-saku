@@ -12,8 +12,7 @@ Schedule::call(function () {
     $users = User::all();
     $receivers = BackupReceiver::where('is_active', true)->get();
 
-    $backupData = []; // kumpulin dulu
-
+    $backupData = []; 
     foreach ($users as $user) {
 
         if ($user->password_mode === 'auto') {

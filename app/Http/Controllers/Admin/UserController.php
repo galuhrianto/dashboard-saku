@@ -144,4 +144,34 @@ class UserController extends Controller
 
     return back(); // ← INI YANG BENAR
 }
+
+public function resetViaWa(User $user)
+{
+    if ($user->password_mode !== 'auto') {
+        return back()->with('error', 'User bukan mode auto');
+    }
+
+    if (!$user->phone) {
+        return back()->with('error', 'Nomor tidak tersedia');
+    }
+
+    // generate password
+    $password = Str::random(8);
+
+    $user->update([
+        'password' => Hash::make($password),
+        'password_initialized_at' => now(),
+    ]);
+
+    // format nomor
+    $phone = preg_replace('/^0/', '62', $user->phone);
+
+    // pesan
+    $message = "Halo {$user->name},\n\n🔐 One on One Diplomacy e-book\n\nPassword terbaru akun Anda:\n{$password}\n\nGunakan password ini untuk login.\n\n⚠️ Mohon untuk tidak membagikan informasi ini kepada siapa pun.";
+
+    // redirect ke wa.me
+    $url = "https://wa.me/{$phone}?text=" . urlencode($message);
+
+    return redirect()->away($url);
+}
 }

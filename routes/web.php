@@ -55,6 +55,8 @@ Route::prefix('admin')
         Route::patch('/backup/{receiver}', [UserController::class, 'toggleBackup'])->name('backup.toggle');
         Route::delete('/backup/{receiver}', [UserController::class, 'destroyBackup'])->name('backup.destroy');
 
+        Route::post('/reset-by-wa/{user}', [UserController::class, 'resetViaWa'])->name('reset.wa');
+
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('head_offices', HeadOfficeController::class);
