@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use App\Services\PasswordRotationService;
 
 class UserController extends Controller
 {
@@ -142,7 +143,7 @@ class UserController extends Controller
         'accounts' => $validUsers
     ]);
 
-    return back(); // ← INI YANG BENAR
+    return back(); 
 }
 
 public function resetViaWa(User $user)
@@ -173,5 +174,14 @@ public function resetViaWa(User $user)
     $url = "https://wa.me/{$phone}?text=" . urlencode($message);
 
     return redirect()->away($url);
+}
+
+public function resetAll(PasswordRotationService $service)
+{
+    set_time_limit(0);
+
+    $service->handle();
+
+    return back()->with('success', 'Reset all berhasil dijalankan');
 }
 }

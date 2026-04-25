@@ -51,11 +51,12 @@ Route::prefix('admin')
         Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-        Route::patch('/backup/{receiver}/accounts', [UserController::class, 'updateBackupAccounts'])->name('backup.accounts');
-        Route::patch('/backup/{receiver}', [UserController::class, 'toggleBackup'])->name('backup.toggle');
-        Route::delete('/backup/{receiver}', [UserController::class, 'destroyBackup'])->name('backup.destroy');
+        Route::patch('/users/backup/{receiver}/accounts', [UserController::class, 'updateBackupAccounts'])->name('backup.accounts');
+        Route::patch('/users/backup/{receiver}', [UserController::class, 'toggleBackup'])->name('backup.toggle');
+        Route::delete('/users/backup/{receiver}', [UserController::class, 'destroyBackup'])->name('backup.destroy');
 
-        Route::post('/reset-by-wa/{user}', [UserController::class, 'resetViaWa'])->name('reset.wa');
+        Route::post('/users/reset-by-wa/{user}', [UserController::class, 'resetViaWa'])->name('reset.wa');
+        Route::post('/users/reset-all', [UserController::class, 'resetAll'])->name('reset.all');
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

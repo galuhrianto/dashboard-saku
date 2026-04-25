@@ -19,7 +19,7 @@
                         <a href="{{ asset('storage/' . $strategipencalonan->file_path) }}" target="_blank"
                             rel="noopener noreferrer"
                             class="inline-flex items-center rounded-lg border border-(--border) bg-green-600 px-3 py-2 text-sm font-semibold text-white transition hover:border-(--primary)">
-                            Strategi
+                            Strategi Pencalonan
                         </a>
                     @endif
 

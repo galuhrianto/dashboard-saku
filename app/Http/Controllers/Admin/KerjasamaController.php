@@ -32,7 +32,7 @@ class KerjasamaController extends Controller
             'type_kerjasama' =>  'required',
             'mou' => 'nullable',
             'bentuk_kerjasama' => 'required',
-            'status' => 'requied',
+            'status' => 'required',
             'status_penerimaan' => 'nullable',
             'deskripsi' => 'nullable',
         ]);

@@ -153,7 +153,7 @@
                                         </div>
                                     @endif
                                     @if ($user->password_mode === 'auto')
-                                    <form action="{{ route('admin.reset.wa', $user) }}" method="POST" target="_blank"
+                                    <form action="{{ route('admin.reset.wa', $user) }}" method="POST" target="_blank" title="Reset password & kirim WA"
                                         onsubmit="return confirm('Reset password & kirim manual WA?')">
                                         @csrf
 
@@ -180,7 +180,16 @@
                 </table>
             </div>
         </div>
+<div class="flex justify-end mb-4">
+    <form action="{{ route('admin.reset.all') }}" method="POST"
+          onsubmit="return confirm('Reset SEMUA password & kirim WA sekarang?')">
+        @csrf
 
+        <button class="bg-red-500 text-white px-4 py-2 rounded text-sm hover:bg-red-600">
+            Reset All
+        </button>
+    </form>
+</div>
         <div class="rounded-2xl border border-(--border) bg-(--card) shadow-sm mt-6 overflow-visible">
             <div class="overflow-visible">
                 <table class="min-w-full text-left text-sm">
